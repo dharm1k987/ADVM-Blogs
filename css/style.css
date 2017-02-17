@@ -1,0 +1,134 @@
+html, body {
+  height: 100%;
+}
+
+/* SECTIONS */
+
+section {
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.main {
+    position: relative;
+    background-image: linear-gradient(
+      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7)
+    ),
+    /* bottom, image */
+    url(img/background.jpg);
+    background-size: cover;
+    padding-bottom: 56.25%;
+    background-attachment: fixed;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+/* HEADINGS */
+.welcome-area {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: white;
+    
+}
+
+.welcome-area h1 {
+    font-size: 500%;
+}
+
+.navbar-header span{
+    color: #00b1ff;
+    font-weight: bold;
+}
+
+.navbar-name-text {
+    letter-spacing: 4px;
+}
+
+section h1{
+    font-size: 300%;
+    margin-bottom: 20px;
+    letter-spacing: 4px;
+}
+
+.divider {    
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(62, 110, 217, 0.53), rgba(0, 0, 0, 0.75), rgba(62, 110, 217, 0.53));
+    margin-bottom: 20px
+}
+
+/* BUTTONS */
+.btn-main button {
+    border-radius: 5%;
+    margin: 2%;
+    background-color: #00b1ff;
+    width: 50%;
+    font-size: 120%;
+    letter-spacing: 5px;
+    padding: 2%;
+    
+}
+
+
+.btn-main  button:hover{
+    background-color: #0089ff;
+    background-color: #0089ff;
+    transition: all 0.5s;
+}
+
+
+/* IMAGES */
+.img-face {
+    display: block;
+    margin: auto;
+    border-radius: 50%;
+    margin-top: 50px;    
+}
+
+.about img {
+    margin-top: 20px;
+    border-radius: 5%;
+    
+}
+
+/* NAV */
+
+
+.navbar {    
+    margin-bottom: 0px;
+    background-color: rgb(11, 32, 42);
+    
+}
+
+.navbar li{
+    margin-left: 20px;
+    font-size: 120%;
+    letter-spacing: 2px;
+}
+
+
+.navbar li:hover {
+    background-color: #00b1ff;
+    transition: all 0.2s;
+}
+
+.navbar>.container-fluid .navbar-brand {
+    margin-left: 20px;
+}
+
+/* ICONS */
+.gallery-icons span{
+    margin-top: 2%;
+    color: #00b1ff;
+    font-size: 150%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+
+
