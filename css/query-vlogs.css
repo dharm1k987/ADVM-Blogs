@@ -1,0 +1,12 @@
+@media all and (max-width: 480px) {
+.container:not(:nth-child(2)) {
+    margin-top: 40%;
+    margin-bottom: 17%;
+} 
+    
+    .vlog-title {
+    text-align:center; font-size:200%; margin-top:20%;
+        text-decoration: underline;
+}
+}
+    

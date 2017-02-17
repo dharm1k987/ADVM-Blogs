@@ -1,46 +1,79 @@
-html, body {
-  height: 100%;
+html,
+body {
+    font-family: 'Overpass', sans-serif;
 }
+
+* {
+    box-sizing: border-box;
+}
+
 
 /* SECTIONS */
 
-section {
-    padding-top: 2%;
-    padding-bottom: 2%;
-}
-
 .main {
     position: relative;
-    background-image: linear-gradient(
-      rgba(0, 0, 0, 0.7), 
-      rgba(0, 0, 0, 0.7)
-    ),
-    /* bottom, image */
-    url(img/background.jpg);
+    background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/background.jpg);
     background-size: cover;
-    padding-bottom: 56.25%;
-    background-attachment: fixed;
+    height: 100vh;
+}
+
+.about {
+    position: relative;
+    color: white;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/about-bg.png);
+    background-size: cover;
+    background: linear-gradient( rgba(0, 0, 0, 0.67), rgba(13, 0, 0, 0.83)), /* bottom, image */
+    url(img/about-bg.jpg);
+    
+}
+
+.hobbies {
+    position: relative;
+    color: white;
+    background-size: cover;
+    background: linear-gradient( rgba(0, 0, 0, 0.67), rgba(13, 0, 0, 0.83)), /* bottom, image */
+    url(img/hobbies-bg.jpg);
+    
+}
+
+.projects {
+    position: relative;
+    color: white;
+    background-size: cover;
+    background: linear-gradient( rgba(0, 0, 0, 0.68), rgba(13, 0, 0, 0.83)), /* bottom, image */
+    url(img/projects-bg.jpg);
+    
+}
+
+.contact {
+    position: relative;
+    color: white;
+    background-size: cover;
+    background: linear-gradient( rgba(0, 0, 0, 0.68), rgba(13, 0, 0, 0.83)), /* bottom, image */
+    url(img/contact-bg.jpg);
+    
 }
 
 .no-padding {
     padding: 0;
 }
 
+
 /* HEADINGS */
+
 .welcome-area {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     color: white;
-    
 }
 
 .welcome-area h1 {
     font-size: 500%;
 }
 
-.navbar-header span{
+.navbar-header span {
     color: #00b1ff;
     font-weight: bold;
 }
@@ -49,21 +82,43 @@ section {
     letter-spacing: 4px;
 }
 
-section h1{
-    font-size: 300%;
-    margin-bottom: 20px;
+section h1 {
+    font-size: 500%;
+    padding: 3%;
     letter-spacing: 4px;
 }
 
-.divider {    
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(62, 110, 217, 0.53), rgba(0, 0, 0, 0.75), rgba(62, 110, 217, 0.53));
-    margin-bottom: 20px
+hr.divider {
+    border: 1px solid #00b1ff;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    filter: blur(1px);
+    width: 25%;
 }
 
+.section-text {
+    line-height: 170%;
+    font-size: 110%;
+    /*background: -webkit-linear-gradient(left, rgba(142, 212, 255, 0.11) 0%, rgba(142, 212, 255, 0.11) 100%);*/
+    /* Chrome10-25,Safari5.1-6 */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0;
+}
+
+.hr-blue {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #00b1ff;
+    margin: 1em 0;
+    padding: 0;
+}
+
+
 /* BUTTONS */
-.btn-main button {
+
+.btn-main button, .btn-submit {
     border-radius: 5%;
     margin: 2%;
     background-color: #00b1ff;
@@ -71,46 +126,129 @@ section h1{
     font-size: 120%;
     letter-spacing: 5px;
     padding: 2%;
-    
 }
 
-
-.btn-main  button:hover{
+.btn-main button:hover, .btn-submit:hover {
     background-color: #0089ff;
     background-color: #0089ff;
     transition: all 0.5s;
 }
 
 
+
+.gallery-icons i {
+    font-size: 150%;
+    text-decoration: none;
+    margin: 4%
+}
+
+.btn-modal {
+    display: block;
+    margin: auto;
+    width: 50%;
+    letter-spacing: 5px;
+    font-size: 120%;
+    background-color: #00b1ff;
+    padding: 2%;
+    margin-top: 10%;
+    
+        
+}
+
+.btn-modal:hover {
+    background-color: #0089ff;
+    background-color: #0089ff;
+    transition: all 0.5s;
+}
+
+.modal-dialog {
+    color: black;
+}
 /* IMAGES */
+
 .img-face {
     display: block;
     margin: auto;
-    border-radius: 50%;
-    margin-top: 50px;    
+    border-radius: 20%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .about img {
-    margin-top: 20px;
-    border-radius: 5%;
+    margin-top: 2%;
+    border-radius: 2%;
+    /*border: solid white 2px;*/
+    margin-bottom: 2%;
+}
+
+.image-text {
+    line-height: 170%;
+    font-size: 110%;
+    padding: 20px;
+}
+
+.flag {
+    width: 45%;
+    float: left;
+    margin: 2.5%
+}
+
+span.clear {
+    clear: left;
+    display: block;
+}
+
+.hobbies img {
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+.hobbies img:hover {
+    background-color: rgba(255, 255, 255, 0);
+    transform: scale(0.9);
+    transition: all 0.5s;
+}
+
+
+
+.projects img {
+    border-radius: 50%;
+    
+  
+   filter: grayscale();
+    border: 2px solid blue;
+    width: 100%;
+    
     
 }
+
+.projects img:hover {
+    filter: grayscale(20%);
+    transform: scale(0.9);
+    transition: all 0.5s;
+}
+
+.gallery img {
+    width: 100%;
+}
+
+
+
+
 
 /* NAV */
 
-
-.navbar {    
+.navbar {
     margin-bottom: 0px;
     background-color: rgb(11, 32, 42);
-    
+    min-height: 0;
+    z-index: 9999;
 }
 
-.navbar li{
+.navbar li {
     margin-left: 20px;
     font-size: 120%;
     letter-spacing: 2px;
 }
-
 
 .navbar li:hover {
     background-color: #00b1ff;
@@ -121,14 +259,95 @@ section h1{
     margin-left: 20px;
 }
 
+.navbar li:last-child {
+    margin-right: 10px;
+}
+
+
 /* ICONS */
-.gallery-icons span{
-    margin-top: 2%;
+.image-arrows {
+    padding: 50px;
+}
+.ion-chevron-left, .ion-chevron-right {
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 200%;
+    
+    margin: 3%;
+}
+
+
+.ion-chevron-left:hover, .ion-chevron-right:hover {
     color: #00b1ff;
+    
+    transition: all 0.2s;
+}
+
+/* FOOTER */
+footer  {
+    background-color: rgb(30, 33, 38);
+    margin: 0;
+    padding: 0;
+    color: white;
+    
+}
+footer i {
+    
     font-size: 150%;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
+    margin: 1%;
+    color: white;
+    
+    
+}
+
+footer p {
+    margin-top: 0.5%;
+    
+    
 }
 
 
 
+
+
+/*
+    Multicoloured Hover Variations
+*/
+ 
+
+
+
+/* DIVIDER */
+
+
+/*
+.vertical-divider-r {
+    border-right: 2px solid white;
+    
+}
+
+.vertical-divider-l {
+    border-left: 2px solid white;
+}
+*/
+
+.horizontal-divider {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border-bottom: solid 2px white;
+}
+
+
+/* SCROLLBAR */
+body::-webkit-scrollbar {
+    width: 0.5em;
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(43, 51, 253, 0.62);
+  outline: 1px solid slategrey;
+}
