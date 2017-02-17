@@ -20,6 +20,10 @@ body{
 
 }
 
+.animate {
+    transform: scale(0.95);
+}
+
 .container {
     background-color: rgba(186, 186, 186, 0.13);
     padding: 2%;
@@ -31,17 +35,6 @@ body{
     
 }
 
-.container-mirza:hover {
-    background-color: rgba(93, 124, 255, 0.33);
-}
-
-.container-dharmik:hover {
-    background-color: rgba(255, 93, 93, 0.33);
-}
-
-.container-vinit:hover {
-    background-color: rgba(93, 255, 174, 0.33);
-}
 
 .container-dharmik {
     background-color: rgba(255, 93, 93, 0.09);
