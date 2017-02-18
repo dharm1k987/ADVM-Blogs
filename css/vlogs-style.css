@@ -5,6 +5,8 @@ body {
     
     
     color: white;
+    
+}
 }
 
 * {
@@ -30,20 +32,46 @@ body{
 }
 
 .container-mirza {
-    background-color: rgba(93, 124, 255, 0.3);
+    background:
+    /* top, transparent black, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7)
+    ),
+    /* bottom, image */
+    url(img/mirza-vlog-bg.jpeg);
+    background-color: rgba(255, 93, 93, 0.3);
     transition: all 1s;
+    
     
 }
 
 
 .container-dharmik {
+    background:
+    /* top, transparent black, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7)
+    ),
+    /* bottom, image */
+    url(img/dharmik-vlog-bg.jpg);
     background-color: rgba(255, 93, 93, 0.3);
     transition: all 1s;
+    
     
 }
 
 .container-vinit {
-    background-color: rgba(93, 255, 174, 0.3);
+    background:
+    /* top, transparent black, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7)
+    ),
+    /* bottom, image */
+    url(img/vinit-vlog-bg.jpg);
+    background-color: rgba(255, 93, 93, 0.3);
     transition: all 1s;
     
 }
