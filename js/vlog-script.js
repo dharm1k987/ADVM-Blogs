@@ -7,7 +7,7 @@ $(document).ready(function () {
        var bg = $(this).css('backgroundColor');
        
        var rgb = bg.replace(/^rgba?\(|\s+|\)$/g,'').split(',');
-       var value = 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+','+0.33+')';
+       var value = 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+','+0.5+')';
        console.log(value);
        $(this).stop().animate({backgroundColor: value}, 10);
        $(this).addClass('animate');
@@ -20,7 +20,7 @@ $(document).ready(function () {
        var bg = $(this).css('backgroundColor');
        
        var rgb = bg.replace(/^rgba?\(|\s+|\)$/g,'').split(',');
-       var value = 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+','+0.09+')';
+       var value = 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+','+0.3+')';
        console.log(value);
        $(this).stop().animate({backgroundColor: value}, 50);
        $(this).removeClass('animate');
@@ -28,6 +28,7 @@ $(document).ready(function () {
 
        
    });
+
     
     
   

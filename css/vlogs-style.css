@@ -30,20 +30,20 @@ body{
 }
 
 .container-mirza {
-    background-color: rgba(93, 124, 255, 0.09);
+    background-color: rgba(93, 124, 255, 0.3);
     transition: all 1s;
     
 }
 
 
 .container-dharmik {
-    background-color: rgba(255, 93, 93, 0.09);
+    background-color: rgba(255, 93, 93, 0.3);
     transition: all 1s;
     
 }
 
 .container-vinit {
-    background-color: rgba(93, 255, 174, 0.09);
+    background-color: rgba(93, 255, 174, 0.3);
     transition: all 1s;
     
 }
