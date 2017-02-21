@@ -194,6 +194,16 @@ var getBlog = function(blogID) {
         var blogNumber = "blog #"+blogID.substring(4);
         var blogString = blogList.child(blogID.valueOf()).val().blogString;
         printBlog(blogTitle, blogDate, blogAuthor, blogString);
+
+    $(document).ready(function () {
+            $(".container-dharmik, .container-mirza, .container-vinit").mouseenter(function () {
+            $(this).addClass('animate');
+            });
+
+            $(".container-dharmik, .container-mirza, .container-vinit").mouseleave(function () {
+            $(this).removeClass('animate');
+            });
+        });
     });
 };
 
