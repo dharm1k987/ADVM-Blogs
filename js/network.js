@@ -161,7 +161,7 @@ var postComment = function(blogID, comment) {
         getComments(blogID);
     });
 };
-
+var br = document.createElement("br");
 var getComments = function(blogID) {
     var commentAmountRef = blogsRef.child('/'+blogID+'/blogCommentAmount');
     commentAmountRef.once('value', function(commentAmount) {
@@ -173,7 +173,11 @@ var getComments = function(blogID) {
             var commentRef = blogsRef.child(blogID+'/comments/'+commentID);
             commentRef.once('value', function(comment) {
                 // UPDATE FRONTEND WITH COMMENTS HERE.
-                commentsSection.appendChild(document.createTextNode(comment.val() + "\n\n"));
+                
+                commentsSection.appendChild(br);
+                commentsSection.appendChild(br);
+                commentsSection.appendChild(document.createTextNode(comment.val()));
+                
             });
         }
     });
@@ -239,6 +243,7 @@ var printBlog = function(blogID, blogTitle, blogDate, blogAuthor, blogString) {
     blogObjEl.appendChild(commentDivision);
     blogObjEl.appendChild(blogCommentTextInput);
     blogObjEl.appendChild(blogCommentBtn);
+    getComments(blogID);
 
     body.appendChild(blogObjEl);
 };
