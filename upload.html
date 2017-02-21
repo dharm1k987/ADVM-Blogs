@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+     <meta charset="UTF-8">
+     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script type="text/javascript" src="network.js"></script>
+</head>
+
+<body onload="initWebpage()">
+
+
+    <form name="myForm">
+
+    <input id="titleInput" placeholder="Title of the blog goes here" size="100dp"><br>
+    <br>
+    <input id="dayInput" placeholder="dd" size="1dp">
+    <input id="monthInput" placeholder="mm" size="1dp">
+    <input id="yearInput" placeholder="yyyy" size="1dp"><br>
+    <br>
+    <textarea id="blogTextInput" placeholder="Can resize this, write here..." size="100dp"></textarea>
+    <div>
+        <br>
+        <p> Author: </p>
+        <input type="radio" name="author" value="Arjun" checked> Arjun<br>
+        <input type="radio" name="author" value="Dharmik" checked> Dharmik<br>
+        <input type="radio" name="author" value="Mirza" checked> Mirza<br>
+        <input type="radio" name="author" value="Vinit" checked> Vinit<br>
+    </div>
+    <br>
+    <input id="blogPushBtn" type="button" value="Post Blog" onclick="reassureBeforePost()">
+    <input id="confirmedPushBtn" type="button" value="Confirmed, Post AWAY!" style="visibility: hidden; background-color: #32CD32;"  onclick="postBlog()">
+    </form>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script type="text/javascript" src="network.js"></script>
+</body>
+
+</html>
