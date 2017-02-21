@@ -174,9 +174,10 @@ var getComments = function(blogID) {
             commentRef.once('value', function(comment) {
                 // UPDATE FRONTEND WITH COMMENTS HERE.
                 
-                commentsSection.appendChild(br);
-                commentsSection.appendChild(br);
+                
+                
                 commentsSection.appendChild(document.createTextNode(comment.val()));
+                commentsSection.appendChild(br);
                 
             });
         }
