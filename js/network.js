@@ -79,7 +79,6 @@ var postBlog = function () {
 
     blogAmountRef.once('value', function(blogAmount) {
         var updatedAmount = blogAmount.val() + 1;
-        alert(updatedAmount);
         defaultDB.update({
             blogAmount: updatedAmount
         });
@@ -98,7 +97,6 @@ var postBlog = function () {
                 break;
             }
         }
-        alert(blogAuthor);
 
         var blogNumber = updatedAmount;
         var blogString = document.getElementById('blogTextInput').value;
@@ -112,6 +110,7 @@ var postBlog = function () {
             blogString: blogString.valueOf()
         };
         blogsRef.update(blogObject);
+        window.location = "advm.me";
 
     });
 };
