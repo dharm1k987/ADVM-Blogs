@@ -161,7 +161,8 @@ var postComment = function(blogID, comment) {
         getComments(blogID);
     });
 };
-var br = document.createElement("br");
+
+
 var getComments = function(blogID) {
     var commentAmountRef = blogsRef.child('/'+blogID+'/blogCommentAmount');
     commentAmountRef.once('value', function(commentAmount) {
@@ -173,12 +174,13 @@ var getComments = function(blogID) {
             var commentRef = blogsRef.child(blogID+'/comments/'+commentID);
             commentRef.once('value', function(comment) {
                 // UPDATE FRONTEND WITH COMMENTS HERE.
-                
-                
-                
-                commentsSection.appendChild(document.createTextNode(comment.val()) + br);
+
+
+
+                commentsSection.appendChild(document.createTextNode(comment.val()));
+                commentsSection.appendChild(document.createElement("br"));
                 //commentsSection.appendChild(br);
-                
+
             });
         }
     });
@@ -223,6 +225,7 @@ var printBlog = function(blogID, blogTitle, blogDate, blogAuthor, blogString) {
     var blogCommentTextInput = document.createElement("input");
     blogCommentTextInput.id = "commentText"+blogID;
     blogCommentTextInput.placeholder = "Comment something...";
+    blogCommentTextInput.className = "reply-input";
     var blogCommentBtn = document.createElement("input");
     blogCommentBtn.type = "button";
     blogCommentBtn.value = "Post";
@@ -299,9 +302,9 @@ btn_today.onclick = function() {
     console.log("in");
     var d = new Date();
     var day = d.getDate();
-    var month = d.getMonth();    
+    var month = d.getMonth();
     var year = d.getFullYear();
-   
+
     if (month < 10) {
         month = "0"+(month+1);
     }
@@ -309,12 +312,12 @@ btn_today.onclick = function() {
         month = month+1;
     }
 
-    
+
     document.getElementById('dayInput').value=day.toString();
     document.getElementById('monthInput').value=month;
     document.getElementById('yearInput').value=year.toString();
-    
-    
+
+
 }
 
 
