@@ -110,7 +110,7 @@ var postBlog = function () {
         };
         blogsRef.update(blogObject);
         window.location = "http://www.advm.me";
-;
+
     });
 };
 
@@ -218,6 +218,15 @@ var reassureBeforePost = function() {
     document.getElementById('blogPushBtn').style.visibility = "hidden";
 }
 
+var push_btn = document.getElementById("push-btn");
+push_btn.onclick = function() {
+    window.location.replace("advm.me/upload");
+}
+
+var ret_btn = document.getElementById("ret-btn");
+ret_btn.onclick = function() {
+    window.location.replace("advm.me");
+}
 
 
 
