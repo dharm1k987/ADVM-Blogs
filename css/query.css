@@ -15,30 +15,15 @@
         float: left;
     }
     .img-choose {
-    height: 100px;
- 
-}
-    
-#blogPushBtn {
-    
-
-    width: 100%; 
-    margin-bottom: 0%;
-    
-    
-}
-    
+        height: 100px;
+    }
+    #blogPushBtn {
+        width: 100%;
+        margin-bottom: 0%;
+    }
     #ret-btn {
-
-    width: 100%;
-
-    
-    
-}
-
-
-
-   
+        width: 100%;
+    }
 }
 
 @media (max-width: 991px) {
@@ -66,10 +51,7 @@
 }
 
 }
-@media all and (min-width: 1024px) and (max-width: 1280px) {
-    
-}
-
+@media all and (min-width: 1024px) and (max-width: 1280px) {}
 @media all and (min-width: 768px) and (max-width: 1024px) {
     .navbar-header {
         float: none;
@@ -109,16 +91,12 @@
     .hobbies-col {
         background-color: red;
     }
-    
     .btn-modal {
-        
         font-size: 95%;
-        
     }
-        .img-choose {
-    height: 100px;
- 
-}
+    .img-choose {
+        height: 100px;
+    }
 }
 @media all and (min-width: 480px) and (max-width: 768px) {
     .projects-col {
@@ -130,12 +108,9 @@
         font-size: 100%;
         margin-bottom: 10%;
     }
-    
-            .img-choose {
-    height: 70px;
- 
-}
-    
+    .img-choose {
+        height: 70px;
+    }
 }
 @media all and (max-width: 480px) {
     .welcome-area h1 {
@@ -173,10 +148,8 @@
         margin-top: 10%;
         margin-bottom: 10%;
     }
-                .img-choose {
-    height: 50px;
- 
-}
-    
+    .img-choose {
+        height: 50px;
+    }
 }
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />

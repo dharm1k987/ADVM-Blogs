@@ -160,13 +160,13 @@ h2{
 .img-choose {
     height: 200px;
     border-radius: 50%;
-    filter: grayscale(100);
+    /*filter: grayscale(100);*/
     transition: all 0.5s;
 }
 
 .img-choose:hover {
     cursor: pointer;   
-    filter: grayscale(0);
+    /*filter: grayscale(0);*/
 }
 
 .date {
@@ -281,3 +281,19 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: rgba(43, 51, 253, 0.62);
   outline: 1px solid slategrey;
+}
+    
+    
+    
+    
+label > input{ /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
+}
+label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:5px solid transparent;
+}
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:5px solid #f00;
+}

@@ -1,4 +1,3 @@
-
 var BLOG_ITEMS_PER_PAGE = 5;
 
 var defaultDB = new Firebase("https://mybloggingdb.firebaseio.com");
@@ -27,15 +26,15 @@ function dothis() {
 };
 
 var increaseBlogAmount = function () {
-    blogAmountRef.once('value').then(function(blogAmount) {
+    blogAmountRef.once('value').then(function (blogAmount) {
         var newBlogAmount = blogAmount.val() + 1;
         console.log(newBlogAmount);
         defaultDB.ref('/blogAmount').set(newBlogAmount);
     })
 };
 
-var getBlogAmount = function (){
-    blogAmountRef.once('value').then(function(amount) {
+var getBlogAmount = function () {
+    blogAmountRef.once('value').then(function (amount) {
         document.getElementById('test').innerHTML = amount;
         console.log(amount.val());
         return amount.val();
@@ -43,14 +42,14 @@ var getBlogAmount = function (){
 };
 
 function getBlog1(amount) {
-    var a = "blog"+100;
+    var a = "blog" + 100;
     blogsRef.set({
         "blog100": {
             blogText: "This is where the blog is",
             blogger: "Vinit"
         }
     })
-    blogsRef.orderByKey().equalTo(a).once('value', function(blogList) {
+    blogsRef.orderByKey().equalTo(a).once('value', function (blogList) {
         document.getElementById('test').innerHTML = blogList.val()[a];
         var m = blogList.val()[a];
         alert(m.blogger);
@@ -70,24 +69,23 @@ function getBlog1(amount) {
 var getCurrentBlogAmount = -1;
 
 
-var updateBlogAmount = function() {
-};
+var updateBlogAmount = function () {};
 
 var postBlog = function () {
     //var updatedBlogAmount = updateBlogAmount();
     //var str = "blog"+updatedBlogAmount;
 
-    blogAmountRef.once('value', function(blogAmount) {
+    blogAmountRef.once('value', function (blogAmount) {
         var updatedAmount = blogAmount.val() + 1;
         defaultDB.update({
             blogAmount: updatedAmount
         });
 
-        var blogID = "blog"+updatedAmount;
+        var blogID = "blog" + updatedAmount;
         var blogTitle = document.getElementById('titleInput').value;
-        var blogDate = document.getElementById('dayInput').value+"-"+
-                        document.getElementById('monthInput').value+"-"+
-                        document.getElementById('yearInput').value;
+        var blogDate = document.getElementById('dayInput').value + "-" +
+            document.getElementById('monthInput').value + "-" +
+            document.getElementById('yearInput').value;
         var authorArr = document.getElementsByName('author');
         var blogAuthor = "";
         for (var i = 0; i < authorArr.length; i++) {
@@ -116,18 +114,18 @@ var postBlog = function () {
 };
 
 function initWebpage() {
-    blogAmountRef.once('value', function(blogAmount) {
+    blogAmountRef.once('value', function (blogAmount) {
         var blogAmount = blogAmount.val();
-        var mostRecentBlogID = "blog"+blogAmount;
+        var mostRecentBlogID = "blog" + blogAmount;
         for (var i = 0; i < 5; i++) {
-            getBlog("blog"+(blogAmount - i));
+            getBlog("blog" + (blogAmount - i));
             //alert(blogAmount - i);
         }
     });
 };
 
 
-var getAuthorFirstname =function (blogAuthor) {
+var getAuthorFirstname = function (blogAuthor) {
     var authorLetter = blogAuthor.substring(0, 1);
     if (authorLetter === "A") {
         return "arjun";
@@ -142,19 +140,19 @@ var getAuthorFirstname =function (blogAuthor) {
     }
 }
 
-var postComment = function(blogID, comment) {
+var postComment = function (blogID, comment) {
     // CHECK COMMENT VALIDITY HERE.
-    var commentAmountRef = defaultDB.child('/blogs/'+blogID+'/blogCommentAmount');
+    var commentAmountRef = defaultDB.child('/blogs/' + blogID + '/blogCommentAmount');
     alert("vinit");
     commentAmountRef.once('value', function (commentAmount) {
         alert(commentAmount.val() + 1);
         var newCommentAmount = commentAmount.val() + 1;
-        defaultDB.child('/blogs/'+blogID).update({
+        defaultDB.child('/blogs/' + blogID).update({
             blogCommentAmount: newCommentAmount
         });
-        var newCommentID = "comment"+newCommentAmount;
+        var newCommentID = "comment" + newCommentAmount;
 
-        var newCommentRef = blogsRef.child('/'+blogID+'/comments/');
+        var newCommentRef = blogsRef.child('/' + blogID + '/comments/');
         var commentObject = {};
         commentObject[newCommentID] = comment.valueOf();
         newCommentRef.update(commentObject);
@@ -163,16 +161,16 @@ var postComment = function(blogID, comment) {
 };
 
 
-var getComments = function(blogID) {
-    var commentAmountRef = blogsRef.child('/'+blogID+'/blogCommentAmount');
-    commentAmountRef.once('value', function(commentAmount) {
+var getComments = function (blogID) {
+    var commentAmountRef = blogsRef.child('/' + blogID + '/blogCommentAmount');
+    commentAmountRef.once('value', function (commentAmount) {
         alert(commentAmount.val());
-        var commentsSection = document.getElementById("commentDivision"+blogID);
+        var commentsSection = document.getElementById("commentDivision" + blogID);
         commentsSection.innerHTML = "";
-        for (var i = 1; i <= commentAmount.val(); i++ ) {
-            commentID = "comment"+i;
-            var commentRef = blogsRef.child(blogID+'/comments/'+commentID);
-            commentRef.once('value', function(comment) {
+        for (var i = 1; i <= commentAmount.val(); i++) {
+            commentID = "comment" + i;
+            var commentRef = blogsRef.child(blogID + '/comments/' + commentID);
+            commentRef.once('value', function (comment) {
                 // UPDATE FRONTEND WITH COMMENTS HERE.
 
 
@@ -187,11 +185,11 @@ var getComments = function(blogID) {
 };
 
 
-var printBlog = function(blogID, blogTitle, blogDate, blogAuthor, blogString) {
+var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
     var body = document.body;
     var firstname = getAuthorFirstname(blogAuthor);
     var blogObjEl = document.createElement("div");
-    blogObjEl.className = "container container-"+firstname;
+    blogObjEl.className = "container container-" + firstname;
 
     var randomDiv = document.createElement("div");
     randomDiv.className = "clearfix";
@@ -205,8 +203,8 @@ var printBlog = function(blogID, blogTitle, blogDate, blogAuthor, blogString) {
     blogDateEl.appendChild(document.createTextNode(blogDate));
 
     var authorImgFilename = firstname;
-    var authorText1 = '<img style=\"vertical-align:middle;border-radius:50%;filter:grayscale(50%)\" src=\"css/img/'+authorImgFilename+'.jpg\" alt=\"image\">';
-    var authorText2 = '<span style=\"margin-left:1%\">'+blogAuthor+'</span>';
+    var authorText1 = '<img style=\"vertical-align:middle;border-radius:50%;filter:grayscale(50%)\" src=\"css/img/' + authorImgFilename + '.jpg\" alt=\"image\">';
+    var authorText2 = '<span style=\"margin-left:1%\">' + blogAuthor + '</span>';
     var authorDiv = document.createElement("div");
     authorDiv.innerHTML = authorText1 + authorText2;
 
@@ -223,7 +221,7 @@ var printBlog = function(blogID, blogTitle, blogDate, blogAuthor, blogString) {
 
     //add comment section
     var blogCommentTextInput = document.createElement('textarea');
-    blogCommentTextInput.id = "commentText"+blogID;
+    blogCommentTextInput.id = "commentText" + blogID;
     blogCommentTextInput.placeholder = "Comment something...";
     blogCommentTextInput.className = "reply-input";
     blogCommentTextInput.cols = "100";
@@ -234,13 +232,15 @@ var printBlog = function(blogID, blogTitle, blogDate, blogAuthor, blogString) {
     blogCommentBtn.type = "button";
     blogCommentBtn.value = "Post";
     blogCommentBtn.className = "post-btn";
-    blogCommentBtn.onclick = function() { postComment(blogID, blogCommentTextInput.value) };
+    blogCommentBtn.onclick = function () {
+        postComment(blogID, blogCommentTextInput.value)
+    };
 
     var randomDiv3 = document.createElement("div");
     randomDiv3.className = "hr";
 
     var commentDivision = document.createElement("div");
-    commentDivision.id = "commentDivision"+blogID;
+    commentDivision.id = "commentDivision" + blogID;
 
 
     blogObjEl.appendChild(blogTitleEl);
@@ -258,23 +258,23 @@ var printBlog = function(blogID, blogTitle, blogDate, blogAuthor, blogString) {
 };
 
 // Check for null objects. testing Required!
-var getBlog = function(blogID) {
-    blogsRef.orderByKey().equalTo(blogID.valueOf()).once('value', function(blogList) {
+var getBlog = function (blogID) {
+    blogsRef.orderByKey().equalTo(blogID.valueOf()).once('value', function (blogList) {
         var blogTitle = blogList.child(blogID.valueOf()).val().blogTitle;
         var blogDate = blogList.child(blogID.valueOf()).val().blogDate;
         var blogAuthor = blogList.child(blogID.valueOf()).val().blogAuthor;
-        var blogNumber = "blog #"+blogID.substring(4);
+        var blogNumber = "blog #" + blogID.substring(4);
         var blogString = blogList.child(blogID.valueOf()).val().blogString;
         //printComments(blogID, );
         printBlog(blogID, blogTitle, blogDate, blogAuthor, blogString);
 
-    $(document).ready(function () {
+        $(document).ready(function () {
             $(".container-dharmik, .container-mirza, .container-vinit").mouseenter(function () {
-            $(this).addClass('animate');
+                $(this).addClass('animate');
             });
 
             $(".container-dharmik, .container-mirza, .container-vinit").mouseleave(function () {
-            $(this).removeClass('animate');
+                $(this).removeClass('animate');
             });
         });
     });
@@ -285,25 +285,25 @@ var getBlog = function(blogID) {
 
 // POSTING Blogs
 
-var reassureBeforePost = function() {
-    alert("Item Deletion not implemented yet. Please revise before posting. Then, click the Green \"Confirmation Button\"");
-    document.getElementById('confirmedPushBtn').style.visibility = "visible";
-    document.getElementById('blogPushBtn').style.visibility = "hidden";
-}
-/*
-var push_btn = document.getElementById("push-btn");
-push_btn.onclick = function() {
-    window.location.replace("/upload");
-}*/
+var reassureBeforePost = function () {
+        alert("Item Deletion not implemented yet. Please revise before posting. Then, click the Green \"Confirmation Button\"");
+        document.getElementById('confirmedPushBtn').style.visibility = "visible";
+        document.getElementById('blogPushBtn').style.visibility = "hidden";
+    }
+    /*
+    var push_btn = document.getElementById("push-btn");
+    push_btn.onclick = function() {
+        window.location.replace("/upload");
+    }*/
 
 var ret_btn = document.getElementById("ret-btn");
-ret_btn.onclick = function() {
+ret_btn.onclick = function () {
     console.log("will now redirect");
-    document.location.href="/index.html";
+    document.location.href = "/index.html";
 }
 
 var btn_today = document.getElementById("btnToday");
-btn_today.onclick = function() {
+btn_today.onclick = function () {
     console.log("in");
     var d = new Date();
     var day = d.getDate();
@@ -311,18 +311,15 @@ btn_today.onclick = function() {
     var year = d.getFullYear();
 
     if (month < 10) {
-        month = "0"+(month+1);
-    }
-    else {
-        month = month+1;
+        month = "0" + (month + 1);
+    } else {
+        month = month + 1;
     }
 
 
-    document.getElementById('dayInput').value=day.toString();
-    document.getElementById('monthInput').value=month;
-    document.getElementById('yearInput').value=year.toString();
+    document.getElementById('dayInput').value = day.toString();
+    document.getElementById('monthInput').value = month;
+    document.getElementById('yearInput').value = year.toString();
 
 
 }
-
-

@@ -44,9 +44,9 @@
 
                 </div>
                 <div class="col-md-1">
-                   <label for="btnToday">Today:</label>
+                    <label for="btnToday">Today:</label>
                     <button type="button" class="btn btn-success btnToday" id="btnToday">Today</button>
-                    
+
                 </div>
 
             </div>
@@ -56,21 +56,35 @@
                 <textarea class="form-control" rows="5" id="blogTextInput"></textarea>
             </div>
 
-<div class="row image-row">
-    <div class="col-md-3 img-col">
-        <img src="css/img/dharmik-full.jpg" alt="dharmik-full" class="img-responsive img-choose">
-    </div>
-    <div class="col-md-3 img-col">
-        <img src="css/img/vinit-full.jpg" alt="dharmik-full" class="img-responsive img-choose">
-    </div>
-    <div class="col-md-3 img-col">
-        <img src="css/img/mirza-full.jpg" alt="dharmik-full" class="img-responsive img-choose">
-    </div>
-    <div class="col-md-3 img-col">
-        <img src="css/img/mirza-full.jpg" alt="dharmik-full" class="img-responsive img-choose">
-    </div>
-</div>
-            
+            <div class="row image-row">
+                <div class="col-md-3 img-col">
+                    <label>
+    <input type="radio" name="author" value="Dharmik" />
+    <img src="css/img/dharmik-full.jpg" alt="dharmik-full" class="img-responsive img-choose">
+                  </label>
+
+                </div>
+                <div class="col-md-3 img-col">
+                    <label>
+    <input type="radio" name="author" value="Vinit" />
+    <img src="css/img/vinit-full.jpg" alt="vinit-full" class="img-responsive img-choose">
+                  </label>
+                </div>
+                <div class="col-md-3 img-col">
+                    <label>
+    <input type="radio" name="author" value="Mirza" />
+    <img src="css/img/mirza-full.jpg" alt="mirza-full" class="img-responsive img-choose">
+                  </label>
+                </div>
+                <div class="col-md-3 img-col">
+                    <label>
+    <input type="radio" name="author" value="Mirza" />
+    <img src="css/img/mirza-full.jpg" alt="mirza-full" class="img-responsive img-choose">
+                  </label>
+                </div>
+            </div>
+
+<!--
             <div>
                 <br>
                 <p> <strong>Author: </strong></p>
@@ -78,7 +92,7 @@
                 <input type="radio" name="author" value="Dharmik" checked> Dharmik<br>
                 <input type="radio" name="author" value="Mirza" checked> Mirza<br>
                 <input type="radio" name="author" value="Vinit" checked> Vinit<br>
-            </div>
+            </div>-->
             <br>
             <input id="blogPushBtn" type="button" value="Post Blog" onclick="reassureBeforePost();">
             <input id="confirmedPushBtn" type="button" value="Confirmed, Post AWAY!" style="visibility: hidden; background-color: #32CD32;" onclick="postBlog();">
