@@ -110,8 +110,8 @@ var postBlog = function () {
             blogString: blogString.valueOf()
         };
         blogsRef.update(blogObject);
-        window.location = "advm.me";
-
+        window.location = "http://www.advm.me";
+;
     });
 };
 
