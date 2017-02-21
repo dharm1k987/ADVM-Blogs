@@ -176,8 +176,8 @@ var getComments = function(blogID) {
                 
                 
                 
-                commentsSection.appendChild(document.createTextNode(comment.val()));
-                commentsSection.appendChild(br);
+                commentsSection.appendChild(document.createTextNode(comment.val()) + br);
+                //commentsSection.appendChild(br);
                 
             });
         }
