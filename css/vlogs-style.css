@@ -217,8 +217,7 @@ line-height: 35px;
     font-size: 100%;
     border-radius: 2%;;
     transition: all 0.5s;
-    margin-bottom: 2%;
-    margin-top: 2%;
+
     
     
     border: solid 2px white;
@@ -240,11 +239,11 @@ line-height: 35px;
     text-align: center;
     padding: 2px;
     font-size: 100%;
-    border-radius: 2%;;
+    border-radius: 2%;
     transition: all 0.5s;
-    margin-bottom: 2%;
-    margin-top: 2%; 
-    
+
+
+    margin-bottom: 1%;
     border: solid 2px white;
     
     

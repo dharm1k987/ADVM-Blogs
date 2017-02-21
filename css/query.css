@@ -14,6 +14,30 @@
         width: 20%;
         float: left;
     }
+    .img-choose {
+    height: 100px;
+ 
+}
+    
+#blogPushBtn {
+    
+
+    width: 100%; 
+    margin-bottom: 0%;
+    
+    
+}
+    
+    #ret-btn {
+
+    width: 100%;
+
+    
+    
+}
+
+
+
    
 }
 
@@ -91,6 +115,10 @@
         font-size: 95%;
         
     }
+        .img-choose {
+    height: 100px;
+ 
+}
 }
 @media all and (min-width: 480px) and (max-width: 768px) {
     .projects-col {
@@ -102,6 +130,11 @@
         font-size: 100%;
         margin-bottom: 10%;
     }
+    
+            .img-choose {
+    height: 70px;
+ 
+}
     
 }
 @media all and (max-width: 480px) {
@@ -140,6 +173,10 @@
         margin-top: 10%;
         margin-bottom: 10%;
     }
+                .img-choose {
+    height: 50px;
+ 
+}
     
 }
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
