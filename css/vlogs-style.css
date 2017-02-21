@@ -157,6 +157,17 @@ h2{
     
 }
 
+.img-choose {
+    height: 200px;
+    border-radius: 50%;
+    filter: grayscale(100);
+    transition: all 0.5s;
+}
+
+.img-choose:hover {
+    cursor: pointer;   
+    filter: grayscale(0);
+}
 
 .date {
     
