@@ -106,7 +106,8 @@ var postBlog = function () {
             blogTitle: blogTitle.valueOf(),
             blogDate: blogDate.valueOf(),
             blogAuthor: blogAuthor.valueOf(),
-            blogString: blogString.valueOf()
+            blogString: blogString.valueOf(),
+            blogCommentAmount: 0
         };
         blogsRef.update(blogObject);
         window.location = "http://www.advm.me";
@@ -141,8 +142,21 @@ var getAuthorFirstname =function (blogAuthor) {
     }
 }
 
+var postComment = function(blogID, comment) {
+    var commentAmountRef = defaultDB.child('/blogs/'+blogID+'/blogCommentAmount');
+    commentAmountRef.once('value', function (commentAmount) {
+        var newCommentAmount = commentAmount.val() + 1;
+        var newCommentID = "comment"+newCommentAmount;
 
-var printBlog = function(blogTitle, blogDate, blogAuthor, blogString) {
+        var newCommentRef = blogsRef.child('/'+blogID+'/comments/'+newCommentID);
+        var commentObject = {};
+        newCommentRef[newCommentID] = comment.valueOf();
+        newCommentRef.update(newCommentID);
+    });
+}
+
+
+var printBlog = function(blogID, blogTitle, blogDate, blogAuthor, blogString) {
     var body = document.body;
     var firstname = getAuthorFirstname(blogAuthor);
     var blogObjEl = document.createElement("div");
@@ -176,11 +190,25 @@ var printBlog = function(blogTitle, blogDate, blogAuthor, blogString) {
     blogTextElPara.appendChild(document.createTextNode(blogString));
     blogTextElDiv.appendChild(blogTextElPara);
 
+    //add comment section
+    var blogCommentTextInput = document.createElement("input");
+    blogCommentTextInput.id = "commentText"+blogID;
+    var blogCommentBtn = document.createElement("input");
+    blogCommentBtn.type = "button";
+    blogCommentBtn.onclick = function() { postComment(blogID, blogCommentTextInput.value) };
+
+    var randomDiv3 = document.createElement("div");
+    randomDiv3.className = "hr";
+
+
     blogObjEl.appendChild(blogTitleEl);
     blogObjEl.appendChild(blogDateEl);
     blogObjEl.appendChild(authorDiv);
     blogObjEl.appendChild(randomDiv2);
     blogObjEl.appendChild(blogTextElDiv);
+    blogObjEl.appendChild(randomDiv3);
+    blogObjEl.appendChild(blogCommentTextInput);
+    blogObjEl.appendChild(blogCommentBtn);
 
     body.appendChild(blogObjEl);
 };
@@ -193,7 +221,7 @@ var getBlog = function(blogID) {
         var blogAuthor = blogList.child(blogID.valueOf()).val().blogAuthor;
         var blogNumber = "blog #"+blogID.substring(4);
         var blogString = blogList.child(blogID.valueOf()).val().blogString;
-        printBlog(blogTitle, blogDate, blogAuthor, blogString);
+        printBlog(blogID, blogTitle, blogDate, blogAuthor, blogString);
 
     $(document).ready(function () {
             $(".container-dharmik, .container-mirza, .container-vinit").mouseenter(function () {
@@ -220,4 +248,12 @@ var reassureBeforePost = function() {
 
 
 
+var push_btn = document.getElementById("push-btn");
+push_btn.onclick = function() {
+    window.location.replace("advm.me/upload");
+}
 
+var ret_btn = document.getElementById("ret-btn");
+ret_btn.onclick = function() {
+    window.location.replace("advm.me");
+}
