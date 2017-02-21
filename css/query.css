@@ -10,6 +10,10 @@
     .about {
         height: initial;
     }
+    .img-col {
+        width: 20%;
+        float: left;
+    }
    
 }
 
