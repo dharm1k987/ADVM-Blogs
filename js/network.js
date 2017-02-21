@@ -276,16 +276,16 @@ var reassureBeforePost = function() {
     document.getElementById('confirmedPushBtn').style.visibility = "visible";
     document.getElementById('blogPushBtn').style.visibility = "hidden";
 }
-
+/*
 var push_btn = document.getElementById("push-btn");
 push_btn.onclick = function() {
     window.location.replace("/upload");
-}
+}*/
 
 var ret_btn = document.getElementById("ret-btn");
 ret_btn.onclick = function() {
     console.log("will now redirect");
-    document.location.href="/";
+    document.location.href="/index.html";
 }
 
 var btn_today = document.getElementById("btnToday");
