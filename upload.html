@@ -2,42 +2,76 @@
 
 <html>
 <head>
-     <meta charset="UTF-8">
-     
-     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/vlogs-style.css">
-    <script type="text/javascript" src="js/network.js"></script>
-    
+
+
 </head>
 
 <body>
 
+    <div class="container">
+        <form name="myForm">
 
-    <form name="myForm">
+            <div class="form-group">
+                <label for="titleInput">Title of Vlog:</label>
+                <input type="text" class="form-control" id="titleInput" place>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <div class="form-group">
+                        <label for="dayInput">Day:</label>
+                        <input type="text" class="form-control" id="dayInput" place>
+                    </div>
 
-    <input id="titleInput" placeholder="Title of the blog goes here" size="100dp"><br>
-    <br>
-    <input id="dayInput" placeholder="dd" size="1dp">
-    <input id="monthInput" placeholder="mm" size="1dp">
-    <input id="yearInput" placeholder="yyyy" size="1dp"><br>
-    <br>
-    <textarea id="blogTextInput" placeholder="Can resize this, write here..." size="100dp"></textarea>
-    <div>
-        <br>
-        <p> Author: </p>
-        <input type="radio" name="author" value="Arjun" checked> Arjun<br>
-        <input type="radio" name="author" value="Dharmik" checked> Dharmik<br>
-        <input type="radio" name="author" value="Mirza" checked> Mirza<br>
-        <input type="radio" name="author" value="Vinit" checked> Vinit<br>
+                </div>
+
+                <div class="col-md-1">
+                    <div class="form-group">
+                        <label for="monthInput">Month:</label>
+                        <input type="text" class="form-control" id="monthInput" place>
+                    </div>
+
+                </div>
+
+                <div class="col-md-1">
+                    <div class="form-group">
+                        <label for="yearInput">Year:</label>
+                        <input type="text" class="form-control" id="yearInput" place>
+                    </div>
+
+                </div>
+                <div class="col-md-1">
+                   <label for="btnToday">Today:</label>
+                    <button type="button" class="btn btn-success btnToday" id="btnToday">Today</button>
+                    
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="blogTextInput">Message:</label>
+                <textarea class="form-control" rows="5" id="blogTextInput"></textarea>
+            </div>
+
+
+            
+            <div>
+                <br>
+                <p> <strong>Author: </strong></p>
+                <input type="radio" name="author" value="Arjun" checked> Arjun<br>
+                <input type="radio" name="author" value="Dharmik" checked> Dharmik<br>
+                <input type="radio" name="author" value="Mirza" checked> Mirza<br>
+                <input type="radio" name="author" value="Vinit" checked> Vinit<br>
+            </div>
+            <br>
+            <input id="blogPushBtn" type="button" value="Post Blog" onclick="reassureBeforePost();">
+            <input id="confirmedPushBtn" type="button" value="Confirmed, Post AWAY!" style="visibility: hidden; background-color: #32CD32;" onclick="postBlog();">
+        </form>
+        <div id="ret-btn">Return to Vlog
+        </div>
     </div>
-    <br>
-    <input id="blogPushBtn" type="button" value="Post Blog" onclick="reassureBeforePost();">
-    <input id="confirmedPushBtn" type="button" value="Confirmed, Post AWAY!" style="visibility: hidden; background-color: #32CD32;"  onclick="postBlog();">
-    </form>
-    <div id="ret-btn">Return to Vlog 
-</div> 
-</div>
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script type="text/javascript" src="js/network.js"></script>

@@ -276,13 +276,38 @@ var reassureBeforePost = function() {
     document.getElementById('confirmedPushBtn').style.visibility = "visible";
     document.getElementById('blogPushBtn').style.visibility = "hidden";
 }
-
+/*
 var push_btn = document.getElementById("push-btn");
 push_btn.onclick = function() {
     window.location.replace("/upload");
-}
+}*/
 
 var ret_btn = document.getElementById("ret-btn");
 ret_btn.onclick = function() {
     window.location.replace("advm.me");
 }
+
+var btn_today = document.getElementById("btnToday");
+btn_today.onclick = function() {
+    console.log("in");
+    var d = new Date();
+    var day = d.getDate();
+    var month = d.getMonth();    
+    var year = d.getFullYear();
+   
+    if (month < 10) {
+        month = "0"+(month+1);
+    }
+    else {
+        month = month+1;
+    }
+
+    
+    document.getElementById('dayInput').value=day.toString();
+    document.getElementById('monthInput').value=month;
+    document.getElementById('yearInput').value=year.toString();
+    
+    
+}
+
+

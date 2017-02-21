@@ -194,7 +194,7 @@ h2{
 
 #ret-btn {
     
-    background-color: #1483ac;
+    background-color: #c71313;
     width: 10%;
     text-align: center;
     padding: 2px;
@@ -212,7 +212,32 @@ h2{
 
 #ret-btn:hover {
     cursor: pointer;
-    background-color: #0e607e;
+    background-color: #a30d1e;
+    transform: scale(1.1);
+    
+}
+
+#blogPushBtn {
+    
+    background-color: #2bac14;
+    width: 10%;
+    text-align: center;
+    padding: 2px;
+    font-size: 100%;
+    border-radius: 2%;;
+    transition: all 0.5s;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    
+    
+    border: solid 2px white;
+    
+    
+}
+
+#blogPushBtn:hover {
+    cursor: pointer;
+    background-color: #0c7c14;
     transform: scale(1.1);
     
 }
