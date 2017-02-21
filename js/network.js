@@ -222,13 +222,18 @@ var printBlog = function(blogID, blogTitle, blogDate, blogAuthor, blogString) {
     blogTextElDiv.appendChild(blogTextElPara);
 
     //add comment section
-    var blogCommentTextInput = document.createElement("input");
+    var blogCommentTextInput = document.createElement('textarea');
     blogCommentTextInput.id = "commentText"+blogID;
     blogCommentTextInput.placeholder = "Comment something...";
     blogCommentTextInput.className = "reply-input";
+    blogCommentTextInput.cols = "100";
+    blogCommentTextInput.rows = "3";
+    blogCommentTextInput.maxLength = 200;
+
     var blogCommentBtn = document.createElement("input");
     blogCommentBtn.type = "button";
     blogCommentBtn.value = "Post";
+    blogCommentBtn.className = "post-btn";
     blogCommentBtn.onclick = function() { postComment(blogID, blogCommentTextInput.value) };
 
     var randomDiv3 = document.createElement("div");

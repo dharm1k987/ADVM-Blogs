@@ -233,7 +233,7 @@ line-height: 35px;
     
 }
 
-#blogPushBtn {
+#blogPushBtn, .post-btn {
     
     background-color: #2bac14;
     width: 10%;
@@ -243,15 +243,27 @@ line-height: 35px;
     border-radius: 2%;;
     transition: all 0.5s;
     margin-bottom: 2%;
-    margin-top: 2%;
-    
+    margin-top: 2%; 
     
     border: solid 2px white;
     
     
 }
 
-#blogPushBtn:hover {
+.reply-input {
+    height: 50px;
+    width: 100%;
+    margin-top: 2%;
+    font-size: 100%;
+    border-radius: 2%;
+    word-wrap: break-word;
+    background-color: #eeeeee;
+    resize: none;
+}
+
+
+
+#blogPushBtn:hover, .post-btn:hover {
     cursor: pointer;
     background-color: #0c7c14;
     transform: scale(1.1);
