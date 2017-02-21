@@ -17,8 +17,6 @@ var config = {
 
 //postBlog('Vinit\'s Blog', 'Dharmik', 'date_goes_here', 'This is where the blog is');
 
-
-
 /*defaultDB.ref('/blogs').orderByChild('blogger').limitToFirst(2).once('value').then(function (blog) {
     console.log("Running");
     console.log(blog.val());
@@ -130,6 +128,64 @@ function initWebpage() {
 };
 
 
+var getAuthorFirstname =function (blogAuthor) {
+    var authorLetter = blogAuthor.substring(0, 1);
+    if (authorLetter === "A") {
+        return "arjun";
+    } else if (authorLetter === "D") {
+        return "dharmik";
+    } else if (authorLetter === "V") {
+        return "vinit";
+    } else if (authorLetter === "M") {
+        return "mirza";
+    } else {
+        return "ERROR: Author not found.";
+    }
+}
+
+
+var printBlog = function(blogTitle, blogDate, blogAuthor, blogString) {
+    var body = document.body;
+    var firstname = getAuthorFirstname(blogAuthor);
+    var blogObjEl = document.createElement("div");
+    blogObjEl.className = "container container-"+firstname;
+
+    var randomDiv = document.createElement("div");
+    randomDiv.className = "clearfix";
+    blogObjEl.appendChild(randomDiv);
+
+    var blogTitleEl = document.createElement("h1");
+    blogTitleEl.appendChild(document.createTextNode(blogTitle));
+
+    var blogDateEl = document.createElement("h1");
+    blogDateEl.className = "date";
+    blogDateEl.appendChild(document.createTextNode(blogDate));
+
+    var authorImgFilename = firstname;
+    var authorText1 = '<img style=\"vertical-align:middle;border-radius:50%;filter:grayscale(50%)\" src=\"css/img/'+authorImgFilename+'.jpg\" alt=\"image\">';
+    var authorText2 = '<span style=\"margin-left:1%\">'+blogAuthor+'</span>';
+    var authorDiv = document.createElement("div");
+    authorDiv.innerHTML = authorText1 + authorText2;
+
+    var randomDiv2 = document.createElement("div");
+    randomDiv2.className = "hr";
+
+
+    var blogTextElDiv = document.createElement("div");
+    var blogTextElPara = document.createElement("p");
+    blogTextElDiv.className = "row text-justify col-md-12";
+    blogTextElPara.className = "message";
+    blogTextElPara.appendChild(document.createTextNode(blogString));
+    blogTextElDiv.appendChild(blogTextElPara);
+
+    blogObjEl.appendChild(blogTitleEl);
+    blogObjEl.appendChild(blogDateEl);
+    blogObjEl.appendChild(authorDiv);
+    blogObjEl.appendChild(randomDiv2);
+    blogObjEl.appendChild(blogTextElDiv);
+
+    body.appendChild(blogObjEl);
+};
 
 // Check for null objects. testing Required!
 var getBlog = function(blogID) {
@@ -139,14 +195,11 @@ var getBlog = function(blogID) {
         var blogAuthor = blogList.child(blogID.valueOf()).val().blogAuthor;
         var blogNumber = "blog #"+blogID.substring(4);
         var blogString = blogList.child(blogID.valueOf()).val().blogString;
-        alert(blogTitle+"\n"+blogDate+"\n"+blogAuthor+"\n"+blogNumber+"\n"+blogString+"\n");
-        //printBlog(blogTitle, blogDate, blogAuthor, blogString);
-    })
+        printBlog(blogTitle, blogDate, blogAuthor, blogString);
+    });
 };
 
-var printblog = function(blogTitle, blogDate, blogAuthor, blogString) {
 
-};
 
 
 // POSTING Blogs
@@ -156,7 +209,6 @@ var reassureBeforePost = function() {
     document.getElementById('confirmedPushBtn').style.visibility = "visible";
     document.getElementById('blogPushBtn').style.visibility = "hidden";
 }
-
 
 
 
