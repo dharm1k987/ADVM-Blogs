@@ -83,7 +83,6 @@ var postBlog = function () {
             blogAmount: updatedAmount
         });
 
-        var str = "dsadas";
         var blogID = "blog"+updatedAmount;
         var blogTitle = document.getElementById('titleInput').value;
         var blogDate = document.getElementById('dayInput').value+"-"+
