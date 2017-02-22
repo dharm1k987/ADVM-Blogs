@@ -290,11 +290,11 @@ var reassureBeforePost = function () {
         document.getElementById('confirmedPushBtn').style.visibility = "visible";
         document.getElementById('blogPushBtn').style.visibility = "hidden";
     }
-    /*
+    
     var push_btn = document.getElementById("push-btn");
     push_btn.onclick = function() {
-        window.location.replace("/upload");
-    }*/
+        window.location.replace("/upload.html");
+    }
 
 var ret_btn = document.getElementById("ret-btn");
 ret_btn.onclick = function () {
