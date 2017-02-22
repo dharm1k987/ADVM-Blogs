@@ -1,3 +1,12 @@
+$(document).ready(function() {
+    $(".se-pre-con").fadeOut(3000);
+    initWebpage();
+
+});
+
+
+
+
 var BLOG_ITEMS_PER_PAGE = 5;
 
 var defaultDB = new Firebase("https://mybloggingdb.firebaseio.com");
@@ -116,6 +125,7 @@ var postBlog = function () {
 };
 
 function initWebpage() {
+
     blogAmountRef.once('value', function (blogAmount) {
         var blogAmount = blogAmount.val();
         var mostRecentBlogID = "blog" + blogAmount;
