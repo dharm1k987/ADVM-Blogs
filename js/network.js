@@ -13,6 +13,8 @@ var config = {
     messagingSenderId: "41834731643"
 };
 
+var VERIFICATION_KEY = "gangsta";
+
 
 //postBlog('Vinit\'s Blog', 'Dharmik', 'date_goes_here', 'This is where the blog is');
 
@@ -289,10 +291,32 @@ var getBlog = function (blogID) {
 
 // POSTING Blogs
 
+var makeToast = function(outputString, outputStatus) {
+    var colour = "green";
+    if (outputStatus === 1) {
+        colour = "green";
+    } else {
+        colour ="red";
+    }
+    var el = document.getElementById("snackbar");
+    el.innerHTML = outputString;
+    el.className = "show";
+    el.style.backgroundColor = colour;
+    setTimeout(function() {
+        el.className = el.className.replace("show", "");
+    }, 2000);
+}
+
 var reassureBeforePost = function () {
-        alert("Item Deletion not implemented yet. Please revise before posting. Then, click the Green \"Confirmation Button\"");
-        document.getElementById('confirmedPushBtn').style.visibility = "visible";
-        document.getElementById('blogPushBtn').style.visibility = "hidden";
+        var password = document.getElementById("passwordField").value;
+        if (password === VERIFICATION_KEY) {
+            //alert("Item Deletion not implemented yet. Please revise before posting. Then, click the Green \"Confirmation Button\"");
+            makeToast("VERIFIED", 1);
+            document.getElementById('confirmedPushBtn').style.visibility = "visible";
+            document.getElementById('blogPushBtn').style.visibility = "hidden";
+        } else {
+            makeToast("Wrong password", 0);
+        }
     }
 
     var push_btn = document.getElementById("push-btn");
