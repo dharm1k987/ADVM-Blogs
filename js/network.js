@@ -143,9 +143,7 @@ var getAuthorFirstname = function (blogAuthor) {
 var postComment = function (blogID, comment) {
     // CHECK COMMENT VALIDITY HERE.
     var commentAmountRef = defaultDB.child('/blogs/' + blogID + '/blogCommentAmount');
-    alert("vinit");
     commentAmountRef.once('value', function (commentAmount) {
-        alert(commentAmount.val() + 1);
         var newCommentAmount = commentAmount.val() + 1;
         defaultDB.child('/blogs/' + blogID).update({
             blogCommentAmount: newCommentAmount
@@ -164,23 +162,25 @@ var postComment = function (blogID, comment) {
 var getComments = function (blogID) {
     var commentAmountRef = blogsRef.child('/' + blogID + '/blogCommentAmount');
     commentAmountRef.once('value', function (commentAmount) {
-        alert(commentAmount.val());
         var commentsSection = document.getElementById("commentDivision" + blogID);
-        commentsSection.innerHTML = "";
-        for (var i = 1; i <= commentAmount.val(); i++) {
-            commentID = "comment" + i;
-            var commentRef = blogsRef.child(blogID + '/comments/' + commentID);
-            commentRef.once('value', function (comment) {
-                // UPDATE FRONTEND WITH COMMENTS HERE.
+        commentsSection.innerHTML = "<br>";
+        setTimeout(function () {
+            for (var i = 1; i <= commentAmount.val(); i++) {
+                commentID = "comment" + i;
+                var commentRef = blogsRef.child(blogID + '/comments/' + commentID);
+                commentRef.once('value', function (comment) {
+                    // UPDATE FRONTEND WITH COMMENTS HERE.
 
 
 
-                commentsSection.appendChild(document.createTextNode(comment.val()));
-                commentsSection.appendChild(document.createElement("br"));
-                //commentsSection.appendChild(br);
+                    commentsSection.appendChild(document.createTextNode(comment.val()));
+                    commentsSection.appendChild(document.createElement("br"));
+                    //commentsSection.appendChild(br);
 
-            });
-        }
+                });
+            }
+        }, 50);
+
     });
 };
 
@@ -232,15 +232,19 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
     blogCommentBtn.type = "button";
     blogCommentBtn.value = "Post";
     blogCommentBtn.className = "post-btn";
+
+    var commentDivision = document.createElement("div");
+    commentDivision.id = "commentDivision" + blogID;
+
     blogCommentBtn.onclick = function () {
+        commentDivision.innerHTML = "";
         postComment(blogID, blogCommentTextInput.value)
     };
 
     var randomDiv3 = document.createElement("div");
     randomDiv3.className = "hr";
 
-    var commentDivision = document.createElement("div");
-    commentDivision.id = "commentDivision" + blogID;
+
 
 
     blogObjEl.appendChild(blogTitleEl);
@@ -290,7 +294,7 @@ var reassureBeforePost = function () {
         document.getElementById('confirmedPushBtn').style.visibility = "visible";
         document.getElementById('blogPushBtn').style.visibility = "hidden";
     }
-    
+
     var push_btn = document.getElementById("push-btn");
     push_btn.onclick = function() {
         window.location.replace("/upload.html");
