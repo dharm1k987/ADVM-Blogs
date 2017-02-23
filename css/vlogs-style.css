@@ -179,7 +179,7 @@ h2 {
     letter-spacing: 1px;
     border-radius: 2%;
     word-wrap: break-word;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgb(255, 255, 255);
 border: 0px;
     resize: none;
     transition: all 0.5s;
@@ -250,4 +250,8 @@ if it's not present, don't show loader */
 
 .comment-box {
     background-color: red;
+}
+
+input::-webkit-input-placeholder {
+    color: red !important;
 }
