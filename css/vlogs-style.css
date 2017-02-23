@@ -124,22 +124,8 @@ h2 {
 .message {
     line-height: 200%;
 }
-#push-btn {
-    background-color: #069a11;
-    width: 75%;
-    text-align: center;
-    font-size: 150%;
-    transition: all 0.5s;
-    margin-bottom: 5%;
-    border: solid 2px white;
-    line-height: 35px;
-    margin: 0 auto;
-}
-#push-btn:hover {
-    cursor: pointer;
-    background-color: #01790f;
-    transform: scale(1.1);
-}
+
+
 #ret-btn {
     background-color: #c71313;
     width: 10%;
@@ -157,7 +143,8 @@ h2 {
     transform: scale(1.1);
 }
 #blogPushBtn,
-.post-btn {
+.post-btn,
+.push-btn{
     background-color: rgba(255, 255, 255, 0.15);
     width: 10%;
     text-align: center;
@@ -168,6 +155,17 @@ h2 {
     margin-bottom: 1%;
     border: solid 2px white;
     color: white;
+}
+.push-btn {
+
+    width: 75%;
+
+    font-size: 150%;
+    transition: all 0.5s;
+
+
+    line-height: 35px;
+    margin: 0 auto;
 }
 .reply-input {
     height: 50px;
@@ -189,7 +187,8 @@ border: 0px;
     background-color: rgba(255, 255, 255, 0.24);
 }
 #blogPushBtn:hover,
-.post-btn:hover {
+.post-btn:hover,
+.push-btn:hover{
     cursor: pointer;
     background-color: #0c7c14;
     
@@ -253,5 +252,9 @@ if it's not present, don't show loader */
 }
 
 input::-webkit-input-placeholder {
+    color: red !important;
+}
+
+textarea::-webkit-input-placeholder {
     color: red !important;
 }

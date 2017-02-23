@@ -336,11 +336,13 @@ var reassureBeforePost = function () {
             makeToast("Wrong password", 0);
         }
     }
-
-    var push_btn = document.getElementById("push-btn");
+window.onload = function(){ 
+    var push_btn = document.getElementsByClassName("push-btn")[0];
     push_btn.onclick = function() {
         window.location.replace("/upload.html");
     }
+};
+
 
 var ret_btn = document.getElementById("ret-btn");
 ret_btn.onclick = function () {
