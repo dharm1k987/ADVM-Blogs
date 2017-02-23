@@ -60,7 +60,7 @@
 
             <div class="form-group">
                 <label for="titleInput">Title of Vlog:</label>
-                <input type="text" class="form-control" id="titleInput" place>
+                <input type="text" class="form-control" id="titleInput" placeholder="Enter title">
             </div>
             <div class="row">
                 <div class="col-md-1">
@@ -96,7 +96,7 @@
 
             <div class="form-group">
                 <label for="blogTextInput">Message:</label>
-                <textarea class="form-control" rows="5" id="blogTextInput"></textarea>
+                <textarea class="form-control" rows="5" id="blogTextInput" placeholder="Enter message"></textarea>
             </div>
 
             <div class="row image-row">
@@ -137,7 +137,9 @@
                 <input type="radio" name="author" value="Vinit" checked> Vinit<br>
             </div>-->
             <br>
-            <input id="passwordField" class="form-control" type="password" placeholder="------------> IDENTIFY YOURSELF <------------">
+            <label for="passwordField">Password:</label>
+  <input type="password" class="form-control" id="passwordField" placeholder="Enter password">
+   
             <div id="snackbar">adads</div>
             <br>
             <input id="blogPushBtn" type="button" value="Post Blog" onclick="reassureBeforePost();">

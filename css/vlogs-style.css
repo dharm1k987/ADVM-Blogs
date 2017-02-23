@@ -15,7 +15,7 @@ body {
     font-size: 18px;
 }
 .animate {
-    transform: scale(0.95);
+    transform: scale(0.98);
 }
 .container {
     background-color: rgba(186, 186, 186, 0.13);
@@ -158,7 +158,7 @@ h2 {
 }
 #blogPushBtn,
 .post-btn {
-    background-color: #2bac14;
+    background-color: rgba(255, 255, 255, 0.15);
     width: 10%;
     text-align: center;
     padding: 2px;
@@ -167,22 +167,32 @@ h2 {
     transition: all 0.5s;
     margin-bottom: 1%;
     border: solid 2px white;
+    color: white;
 }
 .reply-input {
     height: 50px;
     width: 100%;
-    margin-top: 2%;
-    font-size: 100%;
+
+    margin-bottom: 1%;
+    font-family: 'Overpass', sans-serif;
+    font-size: 95%;
+    letter-spacing: 1px;
     border-radius: 2%;
     word-wrap: break-word;
-    background-color: #eeeeee;
+    background-color: rgba(255, 255, 255, 0);
+border: 0px;
     resize: none;
+    transition: all 0.5s;
+}
+
+.reply-input:hover {
+    background-color: rgba(255, 255, 255, 0.24);
 }
 #blogPushBtn:hover,
 .post-btn:hover {
     cursor: pointer;
     background-color: #0c7c14;
-    transform: scale(1.1);
+    
 }
 body::-webkit-scrollbar {
     width: 0.5em;
@@ -236,4 +246,8 @@ if it's not present, don't show loader */
     height: 100%;
     z-index: 9999;
     background: url(img/preloader.gif) center no-repeat #fff;
+}
+
+.comment-box {
+    background-color: red;
 }

@@ -154,7 +154,9 @@ var getAuthorFirstname = function (blogAuthor) {
 
 var postComment = function (blogID, comment) {
     // CHECK COMMENT VALIDITY HERE.
+    
     var commentAmountRef = defaultDB.child('/blogs/' + blogID + '/blogCommentAmount');
+    
     commentAmountRef.once('value', function (commentAmount) {
         var newCommentAmount = commentAmount.val() + 1;
         defaultDB.child('/blogs/' + blogID).update({
@@ -168,6 +170,7 @@ var postComment = function (blogID, comment) {
         newCommentRef.update(commentObject);
         getComments(blogID);
     });
+    
 };
 
 
@@ -233,6 +236,9 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
 
     //add comment section
     var blogCommentTextInput = document.createElement('textarea');
+    var commentTitle = document.createElement('div');
+ 
+    commentTitle.innerHTML = "<strong>Comments:</strong>";
     blogCommentTextInput.id = "commentText" + blogID;
     blogCommentTextInput.placeholder = "Comment something...";
     blogCommentTextInput.className = "reply-input";
@@ -265,7 +271,9 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
     blogObjEl.appendChild(randomDiv2);
     blogObjEl.appendChild(blogTextElDiv);
     blogObjEl.appendChild(randomDiv3);
+    blogObjEl.appendChild(commentTitle);
     blogObjEl.appendChild(commentDivision);
+    blogObjEl.appendChild(randomDiv2);
     blogObjEl.appendChild(blogCommentTextInput);
     blogObjEl.appendChild(blogCommentBtn);
     getComments(blogID);
