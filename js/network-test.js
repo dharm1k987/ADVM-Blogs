@@ -12,28 +12,12 @@ $(document).ready(function () {
 
 var BLOG_ITEMS_PER_PAGE = 7;
 
-var defaultDB = new Firebase("https://mybloggingdb.firebaseio.com");
+var defaultDB = new Firebase("https://mybloggingdb-testdb.firebaseio.com");
 var blogsRef = defaultDB.child('/blogs/');
 var blogAmountRef = defaultDB.child('/blogAmount/');
 
-// Initialize Firebase
-var config = {
-    apiKey: "AIzaSyBAqXclsER8Y7VxuV7-pYXnv3VHNpSOaHs",
-    authDomain: "mybloggingdb.firebaseapp.com",
-    databaseURL: "https://mybloggingdb.firebaseio.com",
-    storageBucket: "mybloggingdb.appspot.com",
-    messagingSenderId: "41834731643"
-};
-
 var VERIFICATION_KEY = "gangsta";
 
-
-//postBlog('Vinit\'s Blog', 'Dharmik', 'date_goes_here', 'This is where the blog is');
-
-/*defaultDB.ref('/blogs').orderByChild('blogger').limitToFirst(2).once('value').then(function (blog) {
-    console.log("Running");
-    console.log(blog.val());
-});*/
 
 function dothis() {
     getBlogAmount();
