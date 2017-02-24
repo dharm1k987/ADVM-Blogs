@@ -253,7 +253,7 @@ input::-webkit-input-placeholder {
 }
 
 textarea::-webkit-input-placeholder {
-    color: rgba(118, 255, 0, 0.44) !important;
+    color: rgb(255, 0, 0) !important;
 }
 
 
