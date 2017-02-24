@@ -86,7 +86,7 @@ function getDate() {
     var hours = dt.getHours();
     var minute = dt.getMinutes();
     if (minute < 10) {
-        minute = "0"+String(minute);
+        minute = "0" + String(minute);
     }
     var period = "AM";
     if (hours > 12) {
@@ -109,7 +109,7 @@ function getTime() {
     } else {
         month = month + 1;
     }
-    return (String(month)+"/"+String(day)+"/"+String(year));
+    return (String(month) + "/" + String(day) + "/" + String(year));
 
 }
 
@@ -194,7 +194,10 @@ function initWebpage() {
 
 var getAuthorFirstname = function (blogAuthor) {
     var authorLetter = blogAuthor.substring(0, 1);
-    if (authorLetter === "A") {
+
+    if (blogAuthor === "Anonymous") {
+        return "Anonymous";
+    } else if (authorLetter === "A") {
         return "arjun";
     } else if (authorLetter === "D") {
         return "dharmik";
@@ -202,11 +205,7 @@ var getAuthorFirstname = function (blogAuthor) {
         return "vinit";
     } else if (authorLetter === "M") {
         return "mirza";
-    }
-    else if (blogAuthor === "Anonymous") {
-        return "Anonymous";
-    }
-    else {
+    } else {
         return "ERROR: Author not found.";
     }
 }
@@ -370,11 +369,11 @@ var getBlog = function (blogID) {
         printBlog(blogID, blogTitle, blogDate, blogAuthor, blogString);
 
         $(document).ready(function () {
-            $(".container-dharmik, .container-mirza, .container-vinit").mouseenter(function () {
+            $(".container-dharmik, .container-mirza, .container-vinit .container-Anonymous").mouseenter(function () {
                 $(this).addClass('animate');
             });
 
-            $(".container-dharmik, .container-mirza, .container-vinit").mouseleave(function () {
+            $(".container-dharmik, .container-mirza, .container-vinit .container-Anonymous").mouseleave(function () {
                 $(this).removeClass('animate');
             });
         });

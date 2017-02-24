@@ -158,7 +158,7 @@ var postBlog = function () {
             blogCommentAmount: 0
         };
         blogsRef.update(blogObject);
-        window.location = "http://www.advm.me";
+        //window.location = "http://www.advm.me";
 
     });
 };
@@ -178,7 +178,11 @@ function initWebpage() {
 
 var getAuthorFirstname = function (blogAuthor) {
     var authorLetter = blogAuthor.substring(0, 1);
-    if (authorLetter === "A") {
+    
+    if (blogAuthor === "Anonymous") {
+        return "Anonymous";
+    }
+    else if (authorLetter === "A") {
         return "arjun";
     } else if (authorLetter === "D") {
         return "dharmik";
@@ -186,9 +190,6 @@ var getAuthorFirstname = function (blogAuthor) {
         return "vinit";
     } else if (authorLetter === "M") {
         return "mirza";
-    }
-    else if (blogAuthor === "Anonymous") {
-        return "Anonymous";
     }
     else {
         return "ERROR: Author not found.";
@@ -354,11 +355,11 @@ var getBlog = function (blogID) {
         printBlog(blogID, blogTitle, blogDate, blogAuthor, blogString);
 
         $(document).ready(function () {
-            $(".container-dharmik, .container-mirza, .container-vinit").mouseenter(function () {
+            $(".container-dharmik, .container-mirza, .container-vinit .container-Anonymous").mouseenter(function () {
                 $(this).addClass('animate');
             });
 
-            $(".container-dharmik, .container-mirza, .container-vinit").mouseleave(function () {
+            $(".container-dharmik, .container-mirza, .container-vinit .container-Anonymous").mouseleave(function () {
                 $(this).removeClass('animate');
             });
         });

@@ -55,7 +55,7 @@ body {
 }
 
 .container-Anonymous {    
-    background-color: rgb(255, 0, 0);
+    background-color: rgba(255, 0, 0, 0.38);
     transition: all 1s;
 }
 .container-vinit {
