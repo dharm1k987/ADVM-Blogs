@@ -1,8 +1,7 @@
 $(document).ready(function() {
-    var page = window.location.pathname;
-    //alert(page);
+    var path = window.location.pathname;
     $(".se-pre-con").fadeOut(3000);
-    if (page !== "/upload") {
+    if (path == "/") {
         initWebpage();
     }
 
