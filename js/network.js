@@ -202,7 +202,11 @@ var getAuthorFirstname = function (blogAuthor) {
         return "vinit";
     } else if (authorLetter === "M") {
         return "mirza";
-    } else {
+    }
+    else if (blogAuthor === "Anonymous") {
+        return "Anonymous";
+    }
+    else {
         return "ERROR: Author not found.";
     }
 }
