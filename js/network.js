@@ -1,9 +1,12 @@
-/*$(document).ready(function() {
-    if (window.location === "http://www.advm.me/") {
-        $(".se-pre-con").fadeOut(0);
+$(document).ready(function() {
+    var page = window.location.pathname;
+    alert(page);
+    $(".se-pre-con").fadeOut(3000);
+    if (page !== "/upload") {
         initWebpage();
     }
-});*/
+
+});
 
 
 
@@ -284,6 +287,7 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
 
 // Check for null objects. testing Required!
 var getBlog = function (blogID) {
+    alert("ss");
     blogsRef.orderByKey().equalTo(blogID.valueOf()).once('value', function (blogList) {
         var blogTitle = blogList.child(blogID.valueOf()).val().blogTitle;
         var blogDate = blogList.child(blogID.valueOf()).val().blogDate;
@@ -337,7 +341,7 @@ var reassureBeforePost = function () {
             makeToast("Wrong password", 0);
         }
     }
-window.onload = function(){ 
+window.onload = function(){
     var push_btn = document.getElementsByClassName("push-btn")[0];
     push_btn.onclick = function() {
         window.location.replace("/upload.html");
