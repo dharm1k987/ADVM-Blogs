@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var path = window.location.pathname;
     $(".se-pre-con").fadeOut(3000);
     if (path == "/") {
@@ -80,6 +80,39 @@ function getBlog1(amount) {
 // getBlog(var  );
 
 ////////////////////////////////////////////////////////////////////////////////////
+function getDate() {
+
+    var dt = new Date();
+    var hours = dt.getHours();
+    var minute = dt.getMinutes();
+    if (minute < 10) {
+        minute = "0"+String(minute);
+    }
+    var period = "AM";
+    if (hours > 12) {
+        hours = hours - 12;
+        period = "PM";
+    }
+    return (String(hours) + ":" + String(minute) + " " + period);
+
+}
+
+function getTime() {
+
+    var d = new Date();
+    var day = d.getDate();
+    var month = d.getMonth();
+    var year = d.getFullYear();
+
+    if (month < 10) {
+        month = "0" + (month + 1);
+    } else {
+        month = month + 1;
+    }
+    return (String(month)+"/"+String(day)+"/"+String(year));
+
+}
+
 var getCurrentBlogAmount = -1;
 
 
@@ -97,9 +130,28 @@ var postBlog = function () {
 
         var blogID = "blog" + updatedAmount;
         var blogTitle = document.getElementById('titleInput').value;
+        /*var blogDate = document.getElementById('dayInput').value + "-" +
+            document.getElementById('monthInput').value + "-" +
+            document.getElementById('yearInput').value;*/
+
+        /*var dt = new Date();
+        var hours = dt.getHours();
+        var minute = dt.getMinutes();
+        var period = "AM";        
+        if (hours > 12) {
+            hours = hours-12;
+            period = "PM";
+        }*/
+
         var blogDate = document.getElementById('dayInput').value + "-" +
             document.getElementById('monthInput').value + "-" +
-            document.getElementById('yearInput').value;
+            document.getElementById('yearInput').value + " - " + getDate();
+
+        /* var blogID = "blog" + updatedAmount;
+         var blogTitle = document.getElementById('titleInput').value;
+         var blogDate = document.getElementById('dayInput').value + "-" +
+             document.getElementById('monthInput').value + "-" +
+             document.getElementById('yearInput').value;*/
         var authorArr = document.getElementsByName('author');
         var blogAuthor = "";
         for (var i = 0; i < authorArr.length; i++) {
@@ -189,9 +241,18 @@ var getComments = function (blogID) {
                 commentRef.once('value', function (comment) {
                     // UPDATE FRONTEND WITH COMMENTS HERE.
 
+                    var divider = document.createElement("hr");
+                    divider.className = "divider";
+                    var dateTimeComment = document.createElement('div');
+                    dateTimeComment.className = "dtComment";
+                    dateTimeComment.innerHTML = getDate() + " - " + getTime();
+
 
 
                     commentsSection.appendChild(document.createTextNode(comment.val()));
+                    commentsSection.appendChild(document.createElement("br"))
+                    commentsSection.appendChild(dateTimeComment);
+                    commentsSection.appendChild(divider);
                     commentsSection.appendChild(document.createElement("br"));
                     //commentsSection.appendChild(br);
 
@@ -255,7 +316,10 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
     blogCommentBtn.className = "post-btn";
 
     var commentDivision = document.createElement("div");
+    commentDivision.className = "comment-style";
     commentDivision.id = "commentDivision" + blogID;
+
+
 
     blogCommentBtn.onclick = function () {
         commentDivision.innerHTML = "";
@@ -274,10 +338,15 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
     blogObjEl.appendChild(randomDiv2);
     blogObjEl.appendChild(blogTextElDiv);
     blogObjEl.appendChild(randomDiv3);
+
     blogObjEl.appendChild(commentTitle);
+
     blogObjEl.appendChild(commentDivision);
+
+
     blogObjEl.appendChild(randomDiv2);
     blogObjEl.appendChild(blogCommentTextInput);
+
     blogObjEl.appendChild(blogCommentBtn);
     getComments(blogID);
 
@@ -313,36 +382,36 @@ var getBlog = function (blogID) {
 
 // POSTING Blogs
 
-var makeToast = function(outputString, outputStatus) {
+var makeToast = function (outputString, outputStatus) {
     var colour = "green";
     if (outputStatus === 1) {
         colour = "green";
     } else {
-        colour ="red";
+        colour = "red";
     }
     var el = document.getElementById("snackbar");
     el.innerHTML = outputString;
     el.className = "show";
     el.style.backgroundColor = colour;
-    setTimeout(function() {
+    setTimeout(function () {
         el.className = el.className.replace("show", "");
     }, 2000);
 }
 
 var reassureBeforePost = function () {
-        var password = document.getElementById("passwordField").value;
-        if (password === VERIFICATION_KEY) {
-            //alert("Item Deletion not implemented yet. Please revise before posting. Then, click the Green \"Confirmation Button\"");
-            makeToast("VERIFIED", 1);
-            document.getElementById('confirmedPushBtn').style.visibility = "visible";
-            document.getElementById('blogPushBtn').style.visibility = "hidden";
-        } else {
-            makeToast("Wrong password", 0);
-        }
+    var password = document.getElementById("passwordField").value;
+    if (password === VERIFICATION_KEY) {
+        //alert("Item Deletion not implemented yet. Please revise before posting. Then, click the Green \"Confirmation Button\"");
+        makeToast("VERIFIED", 1);
+        document.getElementById('confirmedPushBtn').style.visibility = "visible";
+        document.getElementById('blogPushBtn').style.visibility = "hidden";
+    } else {
+        makeToast("Wrong password", 0);
     }
-window.onload = function(){
+}
+window.onload = function () {
     var push_btn = document.getElementsByClassName("push-btn")[0];
-    push_btn.onclick = function() {
+    push_btn.onclick = function () {
         window.location.replace("/upload.html");
     }
 };
