@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var page = window.location.pathname;
-    alert(page);
+    //alert(page);
     $(".se-pre-con").fadeOut(3000);
     if (page !== "/upload") {
         initWebpage();
@@ -67,7 +67,7 @@ function getBlog1(amount) {
     blogsRef.orderByKey().equalTo(a).once('value', function (blogList) {
         document.getElementById('test').innerHTML = blogList.val()[a];
         var m = blogList.val()[a];
-        alert(m.blogger);
+        //alert(m.blogger);
         console.log(blogList.val()[a].blogger);
     });
 
@@ -287,7 +287,7 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
 
 // Check for null objects. testing Required!
 var getBlog = function (blogID) {
-    alert("ss");
+    //alert("ss");
     blogsRef.orderByKey().equalTo(blogID.valueOf()).once('value', function (blogList) {
         var blogTitle = blogList.child(blogID.valueOf()).val().blogTitle;
         var blogDate = blogList.child(blogID.valueOf()).val().blogDate;
