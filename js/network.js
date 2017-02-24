@@ -351,7 +351,7 @@ window.onload = function(){
 var ret_btn = document.getElementById("ret-btn");
 ret_btn.onclick = function () {
     console.log("will now redirect");
-    document.location.href = "/index.html";
+    document.location.pathname = "/";
 }
 
 var btn_today = document.getElementById("btnToday");
