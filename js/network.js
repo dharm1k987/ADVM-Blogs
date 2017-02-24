@@ -1,8 +1,9 @@
-$(document).ready(function() {
-    $(".se-pre-con").fadeOut(3000);
-    initWebpage();
-
-});
+/*$(document).ready(function() {
+    if (window.location === "http://www.advm.me/") {
+        $(".se-pre-con").fadeOut(0);
+        initWebpage();
+    }
+});*/
 
 
 
@@ -154,9 +155,9 @@ var getAuthorFirstname = function (blogAuthor) {
 
 var postComment = function (blogID, comment) {
     // CHECK COMMENT VALIDITY HERE.
-    
+
     var commentAmountRef = defaultDB.child('/blogs/' + blogID + '/blogCommentAmount');
-    
+
     commentAmountRef.once('value', function (commentAmount) {
         var newCommentAmount = commentAmount.val() + 1;
         defaultDB.child('/blogs/' + blogID).update({
@@ -170,7 +171,7 @@ var postComment = function (blogID, comment) {
         newCommentRef.update(commentObject);
         getComments(blogID);
     });
-    
+
 };
 
 
@@ -237,7 +238,7 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
     //add comment section
     var blogCommentTextInput = document.createElement('textarea');
     var commentTitle = document.createElement('div');
- 
+
     commentTitle.innerHTML = "<strong>Comments:</strong>";
     blogCommentTextInput.id = "commentText" + blogID;
     blogCommentTextInput.placeholder = "Comment something...";
