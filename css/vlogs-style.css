@@ -14,9 +14,7 @@ body {
     font-family: Whitney Medium, Arial;
     font-size: 18px;
 }
-.animate {
-    transform: scale(0.98);
-}
+
 .container {
     background-color: rgba(186, 186, 186, 0.13);
     padding: 2%;
