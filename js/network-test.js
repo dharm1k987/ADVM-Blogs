@@ -70,7 +70,7 @@ function getDate() {
     var hours = dt.getHours();
     var minute = dt.getMinutes();
     if (minute < 10) {
-        minute = "0"+String(minute);
+        minute = "0" + String(minute);
     }
     var period = "AM";
     if (hours > 12) {
@@ -93,7 +93,7 @@ function getTime() {
     } else {
         month = month + 1;
     }
-    return (String(month)+"/"+String(day)+"/"+String(year));
+    return (String(month) + "/" + String(day) + "/" + String(year));
 
 }
 
@@ -178,11 +178,10 @@ function initWebpage() {
 
 var getAuthorFirstname = function (blogAuthor) {
     var authorLetter = blogAuthor.substring(0, 1);
-    
+
     if (blogAuthor === "Anonymous") {
         return "Anonymous";
-    }
-    else if (authorLetter === "A") {
+    } else if (authorLetter === "A") {
         return "arjun";
     } else if (authorLetter === "D") {
         return "dharmik";
@@ -190,8 +189,7 @@ var getAuthorFirstname = function (blogAuthor) {
         return "vinit";
     } else if (authorLetter === "M") {
         return "mirza";
-    }
-    else {
+    } else {
         return "ERROR: Author not found.";
     }
 }
@@ -311,8 +309,11 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
 
 
     blogCommentBtn.onclick = function () {
+        //alert("clicked");
         commentDivision.innerHTML = "";
+
         postComment(blogID, blogCommentTextInput.value)
+        blogCommentTextInput.value = "";
     };
 
     var randomDiv3 = document.createElement("div");
