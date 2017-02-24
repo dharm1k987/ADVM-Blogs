@@ -24,10 +24,10 @@ body {
 .container-mirza {
     background:
     /* top, transparent black, faked with gradient */
-    
+
     linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     /* bottom, image */
-    
+
     url(img/mirza-vlog-bg.jpeg);
     background-color: rgba(255, 93, 93, 0.3);
     transition: all 1s;
@@ -35,10 +35,10 @@ body {
 .container-dharmik {
     background:
     /* top, transparent black, faked with gradient */
-    
+
     linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     /* bottom, image */
-    
+
     url(img/dharmik-vlog-bg.jpg);
     background-color: rgba(255, 93, 93, 0.3);
     transition: all 1s;
@@ -46,10 +46,10 @@ body {
 .container-vinit {
     background:
     /* top, transparent black, faked with gradient */
-    
+
     linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     /* bottom, image */
-    
+
     url(img/vinit-vlog-bg.jpg);
     background-color: rgba(255, 93, 93, 0.3);
     transition: all 1s;
@@ -110,7 +110,7 @@ h2 {
     height: 200px;
     border-radius: 50%;
     /*filter: grayscale(100);*/
-    
+
     transition: all 0.5s;
 }
 .img-choose:hover {
@@ -170,14 +170,13 @@ h2 {
 .reply-input {
     height: 50px;
     width: 100%;
-
     margin-bottom: 1%;
     font-family: 'Overpass', sans-serif;
     font-size: 95%;
     letter-spacing: 1px;
     border-radius: 2%;
     word-wrap: break-word;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
 border: 0px;
     resize: none;
     transition: all 0.5s;
@@ -191,7 +190,7 @@ border: 0px;
 .push-btn:hover{
     cursor: pointer;
     background-color: #0c7c14;
-    
+
 }
 body::-webkit-scrollbar {
     width: 0.5em;
@@ -205,28 +204,28 @@ body::-webkit-scrollbar-thumb {
 }
 label>input {
     /* HIDE RADIO */
-    
+
     visibility: hidden;
     /* Makes input not-clickable */
-    
+
     position: absolute;
     /* Remove input from document flow */
 }
 label>input+img {
     /* IMAGE STYLES */
-    
+
     cursor: pointer;
     border: 5px solid transparent;
 }
 label>input:checked+img {
     /* (RADIO CHECKED) IMAGE STYLES */
-    
+
     border: 5px solid #f00;
 }
 
 /* Paste this css to your style sheet file or under head tag */
 
-/* This only works with JavaScript, 
+/* This only works with JavaScript,
 if it's not present, don't show loader */
 .no-js #loader {
     display: none;
