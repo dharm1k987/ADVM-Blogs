@@ -17,9 +17,9 @@ body {
 
 .container {
     background-color: rgba(186, 186, 186, 0.13);
-    width: 100%;
+    width: 90%;
     padding: 2%;
-    
+
 }
 .container-mirza {
     background:
@@ -56,7 +56,7 @@ body {
     transition: all 1s;
 }
 
-.container-Anonymous {    
+.container-Anonymous {
     background-color: rgba(255, 0, 0, 0.38);
     transition: all 1s;
 }
@@ -95,11 +95,18 @@ h2 {
     text-align: justify;
     color: #cccccc;
 }
-.vlog-title {
+.blog-title {
     text-align: center;
     font-size: 500%;
     margin-top: 2%;
 }
+
+.login-modal-btn {
+    margin: auto;
+    padding: 10px;
+    background-color: green;
+}
+
 .hr {
     display: block;
     height: 1px;
@@ -360,7 +367,7 @@ hr.divider {
   /* border: 1px solid #3079ed; */
   border: 0px;
   color: #fff;
-  text-shadow: 0 1px rgba(0,0,0,0.1); 
+  text-shadow: 0 1px rgba(0,0,0,0.1);
   background-color: #4d90fe;
   padding: 17px 0px;
 
@@ -384,7 +391,7 @@ hr.divider {
   display: inline-block;
   opacity: 0.6;
   transition: all 0.5s;
-} 
+}
 
 .login-help{
   font-size: 12px;

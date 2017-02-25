@@ -1,9 +1,10 @@
 $(document).ready(function () {
     var path = window.location.pathname;
     $(".se-pre-con").fadeOut(3000);
-    if (path == "/") {
+    if (path === "/") {
         initWebpage();
     }
+    initWebpage();
 
 });
 
@@ -83,6 +84,44 @@ function getBlog1(amount) {
 // getBlog(var  );
 
 ////////////////////////////////////////////////////////////////////////////////////
+var isLoggedIn = false;
+
+
+function initWebpage() {
+    var user = firebase.auth().currentUser;
+    if (user) {
+        alert("There is a user logged in");
+        alert(user.email);
+    } else {
+        loginProcess();
+    }
+    blogAmountRef.once('value', function (blogAmount) {
+            var blogAmount = blogAmount.val();
+            var mostRecentBlogID = "blog" + blogAmount;
+            for (var i = 0; i < 5; i++) {
+                getBlog("blog" + (blogAmount - i));
+                //alert(blogAmount - i);
+            }
+    });
+}
+
+var loginProcess = function () {
+    $("#login-modal").modal('show');
+
+    $(".loginmodal-submit").click(function() {
+        firebase.auth().signInWithEmailAndPassword(username.value, password.value).then(function(resolved) {
+            initWebpage();
+        }, function(error) {
+            var errorCode = error.code;
+            var errorMsg = error.message;
+            alert(errorMsg);
+            alert("logged in?");
+        });
+        $("#login-modal").modal('hide');
+    });
+};
+
+
 function getDate() {
 
     var dt = new Date();
@@ -182,17 +221,7 @@ var postBlog = function () {
     });
 };
 
-function initWebpage() {
 
-    blogAmountRef.once('value', function (blogAmount) {
-        var blogAmount = blogAmount.val();
-        var mostRecentBlogID = "blog" + blogAmount;
-        for (var i = 0; i < 5; i++) {
-            getBlog("blog" + (blogAmount - i));
-            //alert(blogAmount - i);
-        }
-    });
-};
 
 
 var getAuthorFirstname = function (blogAuthor) {
@@ -330,8 +359,8 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
 
 
     blogCommentBtn.onclick = function () {
-        console.log(loggedIn);
-        if (loggedIn === false) {
+        console.log(isLoggedIn);
+        if (isLoggedIn === false) {
             $("#login-modal").modal('show');
 
             $(".loginmodal-submit").click(function() {
@@ -478,6 +507,6 @@ btn_today.onclick = function () {
     document.getElementById('dayInput').value = day.toString();
     document.getElementById('monthInput').value = month;
     document.getElementById('yearInput').value = year.toString();
-
-
 }
+
+
