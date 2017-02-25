@@ -93,7 +93,8 @@ function initWebpage() {
         alert("There is a user logged in");
         alert(user.email);
     } else {
-        loginProcess();
+        //Uncomment when implemented logging in.
+        //loginProcess();
     }
     blogAmountRef.once('value', function (blogAmount) {
             var blogAmount = blogAmount.val();
