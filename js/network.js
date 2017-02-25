@@ -9,7 +9,7 @@ $(document).ready(function () {
 
 
 
-
+var loggedIn = false;
 var BLOG_ITEMS_PER_PAGE = 7;
 
 var defaultDB = new Firebase("https://mybloggingdb.firebaseio.com");
@@ -34,6 +34,7 @@ var VERIFICATION_KEY = "gangsta";
     console.log("Running");
     console.log(blog.val());
 });*/
+
 
 function dothis() {
     getBlogAmount();
@@ -324,9 +325,25 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
 
 
 
+
+
     blogCommentBtn.onclick = function () {
-        commentDivision.innerHTML = "";
-        postComment(blogID, blogCommentTextInput.value)
+        console.log(loggedIn);
+        if (loggedIn == false) {
+            $("#login-modal").modal('show');
+            
+            $(".loginmodal-submit").click(function() {
+               loggedIn = true;
+                alert("Logged in, you may now comment");
+               $("#login-modal").modal('hide');
+            });
+        }
+
+        else {
+            commentDivision.innerHTML = "";
+            postComment(blogID, blogCommentTextInput.value)
+        }
+
     };
 
     /*var randomDiv3 = document.createElement("div");
