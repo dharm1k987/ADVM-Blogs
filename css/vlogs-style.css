@@ -286,9 +286,10 @@ if it's not present, don't show loader */
 input::-webkit-input-placeholder {
     color: red !important;
 }
+/*
 textarea::-webkit-input-placeholder {
     color: rgb(255, 0, 0) !important;
-}
+}*/
 hr.divider {
     border: 0;
     height: 1px;
