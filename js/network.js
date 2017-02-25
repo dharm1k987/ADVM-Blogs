@@ -9,7 +9,7 @@ $(document).ready(function () {
 
 
 
-
+var loggedIn = false;
 var BLOG_ITEMS_PER_PAGE = 7;
 
 var defaultDB = new Firebase("https://mybloggingdb.firebaseio.com");
@@ -34,6 +34,7 @@ var VERIFICATION_KEY = "gangsta";
     console.log("Running");
     console.log(blog.val());
 });*/
+
 
 function dothis() {
     getBlogAmount();
@@ -290,8 +291,8 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
     var authorDiv = document.createElement("div");
     authorDiv.innerHTML = authorText1 + authorText2;
 
-    var randomDiv2 = document.createElement("div");
-    randomDiv2.className = "hr";
+    /*var randomDiv2 = document.createElement("div");
+    randomDiv2.className = "hr";*/
 
 
     var blogTextElDiv = document.createElement("div");
@@ -324,13 +325,30 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
 
 
 
+
+
     blogCommentBtn.onclick = function () {
-        commentDivision.innerHTML = "";
-        postComment(blogID, blogCommentTextInput.value)
+        console.log(loggedIn);
+        if (loggedIn == false) {
+            $("#login-modal").modal('show');
+            
+            $(".loginmodal-submit").click(function() {
+               loggedIn = true;
+                alert("Logged in, you may now comment");
+               $("#login-modal").modal('hide');
+            });
+        }
+
+        else {
+            commentDivision.innerHTML = "";
+            postComment(blogID, blogCommentTextInput.value)
+            blogCommentTextInput.value = "";
+        }
+
     };
 
-    var randomDiv3 = document.createElement("div");
-    randomDiv3.className = "hr";
+    /*var randomDiv3 = document.createElement("div");
+    randomDiv3.className = "hr";*/
 
 
 
@@ -338,16 +356,16 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
     blogObjEl.appendChild(blogTitleEl);
     blogObjEl.appendChild(blogDateEl);
     blogObjEl.appendChild(authorDiv);
-    blogObjEl.appendChild(randomDiv2);
+    //blogObjEl.appendChild(randomDiv2);
     blogObjEl.appendChild(blogTextElDiv);
-    blogObjEl.appendChild(randomDiv3);
+    //blogObjEl.appendChild(randomDiv3);
 
     blogObjEl.appendChild(commentTitle);
 
     blogObjEl.appendChild(commentDivision);
 
 
-    blogObjEl.appendChild(randomDiv2);
+    //blogObjEl.appendChild(randomDiv2);
     blogObjEl.appendChild(blogCommentTextInput);
 
     blogObjEl.appendChild(blogCommentBtn);

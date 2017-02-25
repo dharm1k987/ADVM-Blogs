@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="Description" content="A blogging page for Arjun, Dharmik, Vinit and Mirza.">
     <title>ADVM Blogs</title>
+    <link rel="title icon" href="css/icons/favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/vlogs-style.css">
     <link href="https://fonts.googleapis.com/css?family=Overpass" rel="stylesheet">
 
@@ -13,13 +15,31 @@
 </head>
 
 <body>
-   <div class="se-pre-con"></div>
+    <div class="se-pre-con"></div>
     <h1 class="vlog-title"> BLOGS </h1>
 
     <div class="push-btn">+</div>
 
 
 
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="loginmodal-container">
+                <h1 style="color:black; font-size:150%;">Login to Your Account</h1><br>
+                <form>
+                    <input type="text" name="user" placeholder="Username">
+                    <input type="password" name="pass" placeholder="Password">
+                    <button type="button" name="login" class="login loginmodal-submit">Login </button>
+                </form>
+                <!--
+
+                <div class="login-help">
+                    <a href="#">Register</a> - <a href="#">Forgot Password</a>
+                </div>
+                -->
+            </div>
+        </div>
+    </div>
 
 
 </body>
@@ -29,7 +49,10 @@
 <script src="js/jquery-ui.min.js"></script>
 <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 <script src="js/SmoothScroll.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 <script src="js/network.js"></script>
+
 
 
 
