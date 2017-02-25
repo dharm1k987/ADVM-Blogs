@@ -342,6 +342,7 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
         else {
             commentDivision.innerHTML = "";
             postComment(blogID, blogCommentTextInput.value)
+            blogCommentTextInput.value = "";
         }
 
     };
