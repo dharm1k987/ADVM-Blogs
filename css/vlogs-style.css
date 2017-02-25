@@ -14,20 +14,18 @@ body {
     font-family: Whitney Medium, Arial;
     font-size: 18px;
 }
-
 .container {
     background-color: rgba(186, 186, 186, 0.13);
     width: 100%;
     padding: 2%;
-
 }
 .container-mirza {
     background:
     /* top, transparent black, faked with gradient */
-
+    
     linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     /* bottom, image */
-
+    
     url(img/mirza-vlog-bg.jpeg);
     background-color: rgba(255, 93, 93, 0.3);
     transition: all 1s;
@@ -35,27 +33,25 @@ body {
 .container-dharmik {
     background:
     /* top, transparent black, faked with gradient */
-
+    
     linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     /* bottom, image */
-
+    
     url(img/dharmik-vlog-bg.jpg);
     background-color: rgba(255, 93, 93, 0.3);
     transition: all 1s;
 }
-
 .container-dharmik {
     background:
     /* top, transparent black, faked with gradient */
-
+    
     linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     /* bottom, image */
-
+    
     url(img/dharmik-vlog-bg.jpg);
     background-color: rgba(255, 93, 93, 0.3);
     transition: all 1s;
 }
-
 .container-Anonymous {
     background-color: rgba(255, 0, 0, 0.38);
     transition: all 1s;
@@ -63,10 +59,10 @@ body {
 .container-vinit {
     background:
     /* top, transparent black, faked with gradient */
-
+    
     linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     /* bottom, image */
-
+    
     url(img/vinit-vlog-bg.jpg);
     background-color: rgba(255, 93, 93, 0.3);
     transition: all 1s;
@@ -100,11 +96,34 @@ h2 {
     font-size: 500%;
     margin-top: 2%;
 }
-
 .login-modal-btn {
-    margin: auto;
-    padding: 10px;
+    position: relative;
+    height: 50px;
+    width: 50px;
     background-color: green;
+    border-radius: 50%;
+    float: left;
+    margin-left: 2%;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: solid 2px white;
+    transition: all 1s;
+    
+}
+.login-modal-btn i {
+    
+   font-size: 150%;
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+    
+}
+
+.login-modal-btn i:hover {
+    
+    cursor: pointer;
+    color: #de1717;
+    
 }
 
 .hr {
@@ -134,7 +153,7 @@ h2 {
     height: 200px;
     border-radius: 50%;
     /*filter: grayscale(100);*/
-
+    
     transition: all 0.5s;
 }
 .img-choose:hover {
@@ -148,8 +167,6 @@ h2 {
 .message {
     line-height: 200%;
 }
-
-
 #ret-btn {
     background-color: #c71313;
     width: 10%;
@@ -168,7 +185,7 @@ h2 {
 }
 #blogPushBtn,
 .post-btn,
-.push-btn{
+.push-btn {
     background-color: rgba(255, 255, 255, 0.15);
     width: 10%;
     text-align: center;
@@ -181,13 +198,9 @@ h2 {
     color: white;
 }
 .push-btn {
-
     width: 75%;
-
     font-size: 150%;
     transition: all 0.5s;
-
-
     line-height: 35px;
     margin: 0 auto;
 }
@@ -201,20 +214,18 @@ h2 {
     border-radius: 2%;
     word-wrap: break-word;
     background-color: rgba(255, 255, 255, 0.26);
-border: 0px;
+    border: 0px;
     resize: none;
     transition: all 0.5s;
 }
-
 .reply-input:hover {
     background-color: rgba(255, 255, 255, 0.56);
 }
 #blogPushBtn:hover,
 .post-btn:hover,
-.push-btn:hover{
+.push-btn:hover {
     cursor: pointer;
     background-color: #0c7c14;
-
 }
 body::-webkit-scrollbar {
     width: 0.5em;
@@ -228,22 +239,22 @@ body::-webkit-scrollbar-thumb {
 }
 label>input {
     /* HIDE RADIO */
-
+    
     visibility: hidden;
     /* Makes input not-clickable */
-
+    
     position: absolute;
     /* Remove input from document flow */
 }
 label>input+img {
     /* IMAGE STYLES */
-
+    
     cursor: pointer;
     border: 3px solid transparent;
 }
 label>input:checked+img {
     /* (RADIO CHECKED) IMAGE STYLES */
-
+    
     border: 3px solid #f00;
 }
 
@@ -269,26 +280,20 @@ if it's not present, don't show loader */
     z-index: 9999;
     background: url(img/preloader.gif) center no-repeat #fff;
 }
-
 .comment-box {
     background-color: red;
 }
-
 input::-webkit-input-placeholder {
     color: red !important;
 }
-
 textarea::-webkit-input-placeholder {
     color: rgb(255, 0, 0) !important;
 }
-
-
 hr.divider {
     border: 0;
     height: 1px;
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.30));
 }
-
 .dtComment {
     margin-top: 1%;
     font-size: 80%;
@@ -302,97 +307,90 @@ hr.divider {
 
 /****** LOGIN MODAL ******/
 .loginmodal-container {
-  padding: 30px;
-  max-width: 350px;
-  width: 100% !important;
-  background-color: #F7F7F7;
-  margin: 0 auto;
-  border-radius: 1%;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-
+    padding: 30px;
+    max-width: 350px;
+    width: 100% !important;
+    background-color: #F7F7F7;
+    margin: 0 auto;
+    border-radius: 1%;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
 }
-
 .loginmodal-container h1 {
-  text-align: center;
-  font-size: 1.8em;
-
+    text-align: center;
+    font-size: 1.8em;
 }
-
 .loginmodal-container button {
-  width: 100%;
-  display: block;
-  margin-bottom: 10px;
-  position: relative;
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
 }
-
-.loginmodal-container input[type=text], input[type=password] {
+.loginmodal-container input[type=text],
+input[type=password] {
     color: black;
-  height: 44px;
-  font-size: 16px;
-  width: 100%;
-  margin-bottom: 10px;
-  -webkit-appearance: none;
-  background: #fff;
-  border: 1px solid #d9d9d9;
-  border-top: 1px solid #c0c0c0;
-  /* border-radius: 2px; */
-  padding: 0 8px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
+    height: 44px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 10px;
+    -webkit-appearance: none;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    /* border-radius: 2px; */
+    
+    padding: 0 8px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
-
-.loginmodal-container input[type=text]:hover, input[type=password]:hover {
+.loginmodal-container input[type=text]:hover,
+input[type=password]:hover {
     color: black;
-  border: 1px solid #b9b9b9;
-  border-top: 1px solid #a0a0a0;
-  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    border: 1px solid #b9b9b9;
+    border-top: 1px solid #a0a0a0;
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
-
 .loginmodal {
-  text-align: center;
-  font-size: 14px;
-  font-family: 'Arial', sans-serif;
-  font-weight: 700;
-  height: 36px;
-  padding: 0 8px;
-/* border-radius: 3px; */
-/* -webkit-user-select: none;
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    height: 36px;
+    padding: 0 8px;
+    /* border-radius: 3px; */
+    /* -webkit-user-select: none;
   user-select: none; */
 }
-
 .loginmodal-submit {
-  /* border: 1px solid #3079ed; */
-  border: 0px;
-  color: #fff;
-  text-shadow: 0 1px rgba(0,0,0,0.1);
-  background-color: #4d90fe;
-  padding: 17px 0px;
-
-  font-size: 14px;
-  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+    /* border: 1px solid #3079ed; */
+    
+    border: 0px;
+    color: #fff;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+    background-color: #4d90fe;
+    padding: 17px 0px;
+    font-size: 14px;
+    /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
 }
-
 .loginmodal-submit:hover {
-  /* border: 1px solid #2f5bb7; */
-  border: 0px;
-  text-shadow: 0 1px rgba(0,0,0,0.3);
-  background-color: #357ae8;
-  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+    /* border: 1px solid #2f5bb7; */
+    
+    border: 0px;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    background-color: #357ae8;
+    /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
-
 .loginmodal-container a {
-  text-decoration: none;
-  color: #666;
-  font-weight: 400;
-  text-align: center;
-  display: inline-block;
-  opacity: 0.6;
-  transition: all 0.5s;
+    text-decoration: none;
+    color: #666;
+    font-weight: 400;
+    text-align: center;
+    display: inline-block;
+    opacity: 0.6;
+    transition: all 0.5s;
 }
-
-.login-help{
-  font-size: 12px;
+.login-help {
+    font-size: 12px;
 }
