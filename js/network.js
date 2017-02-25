@@ -4,8 +4,6 @@ $(document).ready(function () {
     if (path == "/") {
         initWebpage();
     }
-    // REMOVE BEFORE DEPLOY
-    initWebpage();
 
 });
 
