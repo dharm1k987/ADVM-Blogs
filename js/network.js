@@ -4,7 +4,7 @@ $(document).ready(function () {
     if (path === "/") {
         initWebpage();
     }
-    initWebpage();
+    //initWebpage();
 
 });
 
