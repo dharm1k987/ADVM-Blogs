@@ -4,6 +4,8 @@ $(document).ready(function () {
     if (path == "/") {
         initWebpage();
     }
+    // REMOVE BEFORE DEPLOY
+    initWebpage();
 
 });
 
@@ -26,6 +28,8 @@ var config = {
 };
 
 var VERIFICATION_KEY = "gangsta";
+
+firebase.initializeApp(config);
 
 
 //postBlog('Vinit\'s Blog', 'Dharmik', 'date_goes_here', 'This is where the blog is');
@@ -329,13 +333,19 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
 
     blogCommentBtn.onclick = function () {
         console.log(loggedIn);
-        if (loggedIn == false) {
+        if (loggedIn === false) {
             $("#login-modal").modal('show');
-            
+
             $(".loginmodal-submit").click(function() {
-               loggedIn = true;
-                alert("Logged in, you may now comment");
-               $("#login-modal").modal('hide');
+                firebase.auth().signInWithEmailAndPassword(username.value, password.value).catch(function(error) {
+                    var errorCode = error.code;
+                    var errorMsg = error.message;
+                    alert(errorMsg);
+                    alert("logged in?");
+                });
+                //loggedIn = true;
+                //alert("Logged in, you may now comment");
+                $("#login-modal").modal('hide');
             });
         }
 
@@ -346,6 +356,14 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
         }
 
     };
+
+    var username = document.getElementById("username");
+    var password = document.getElementById("password");
+
+    var loginBtn = document.getElementById("login-btn");
+
+
+
 
     /*var randomDiv3 = document.createElement("div");
     randomDiv3.className = "hr";*/

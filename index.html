@@ -22,14 +22,14 @@
 
 
 
-    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: hidden;">
         <div class="modal-dialog">
             <div class="loginmodal-container">
                 <h1 style="color:black; font-size:150%;">Login to Your Account</h1><br>
                 <form>
-                    <input type="text" name="user" placeholder="Username">
-                    <input type="password" name="pass" placeholder="Password">
-                    <button type="button" name="login" class="login loginmodal-submit">Login </button>
+                    <input type="text" name="user" id="username" placeholder="Username">
+                    <input type="password" name="pass" id="password" placeholder="Password">
+                    <button type="button" name="login" id="login-btn" class="login loginmodal-submit">Login </button>
                 </form>
                 <!--
 
@@ -48,6 +48,7 @@
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
 <script src="js/SmoothScroll.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
