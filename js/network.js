@@ -290,8 +290,8 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
     var authorDiv = document.createElement("div");
     authorDiv.innerHTML = authorText1 + authorText2;
 
-    var randomDiv2 = document.createElement("div");
-    randomDiv2.className = "hr";
+    /*var randomDiv2 = document.createElement("div");
+    randomDiv2.className = "hr";*/
 
 
     var blogTextElDiv = document.createElement("div");
@@ -329,8 +329,8 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
         postComment(blogID, blogCommentTextInput.value)
     };
 
-    var randomDiv3 = document.createElement("div");
-    randomDiv3.className = "hr";
+    /*var randomDiv3 = document.createElement("div");
+    randomDiv3.className = "hr";*/
 
 
 
@@ -338,16 +338,16 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
     blogObjEl.appendChild(blogTitleEl);
     blogObjEl.appendChild(blogDateEl);
     blogObjEl.appendChild(authorDiv);
-    blogObjEl.appendChild(randomDiv2);
+    //blogObjEl.appendChild(randomDiv2);
     blogObjEl.appendChild(blogTextElDiv);
-    blogObjEl.appendChild(randomDiv3);
+    //blogObjEl.appendChild(randomDiv3);
 
     blogObjEl.appendChild(commentTitle);
 
     blogObjEl.appendChild(commentDivision);
 
 
-    blogObjEl.appendChild(randomDiv2);
+    //blogObjEl.appendChild(randomDiv2);
     blogObjEl.appendChild(blogCommentTextInput);
 
     blogObjEl.appendChild(blogCommentBtn);
