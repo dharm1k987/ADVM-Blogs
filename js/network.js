@@ -1,10 +1,21 @@
 $(document).ready(function () {
+    $(".container-dharmik, .container-mirza, .container-vinit, .container-Anonymous").click(function () {
+        alert("in hover");
+        $(this).addClass('animate');
+    });
+
+    $(".container-dharmik, .container-mirza, .container-vinit, .container-Anonymous").mouseleave(function () {
+        $(this).removeClass('animate');
+    });
+    console.log("passwed the func");
     var path = window.location.pathname;
     $(".se-pre-con").fadeOut(3000);
     if (path === "/") {
         initWebpage();
     }
     //initWebpage();
+
+
 
 });
 
@@ -97,22 +108,22 @@ function initWebpage() {
         //loginProcess();
     }
     blogAmountRef.once('value', function (blogAmount) {
-            var blogAmount = blogAmount.val();
-            var mostRecentBlogID = "blog" + blogAmount;
-            for (var i = 0; i < 5; i++) {
-                getBlog("blog" + (blogAmount - i));
-                //alert(blogAmount - i);
-            }
+        var blogAmount = blogAmount.val();
+        var mostRecentBlogID = "blog" + blogAmount;
+        for (var i = 0; i < 5; i++) {
+            getBlog("blog" + (blogAmount - i));
+            //alert(blogAmount - i);
+        }
     });
 }
 
 var loginProcess = function () {
     $("#login-modal").modal('show');
 
-    $(".loginmodal-submit").click(function() {
-        firebase.auth().signInWithEmailAndPassword(username.value, password.value).then(function(resolved) {
+    $(".loginmodal-submit").click(function () {
+        firebase.auth().signInWithEmailAndPassword(username.value, password.value).then(function (resolved) {
             initWebpage();
-        }, function(error) {
+        }, function (error) {
             var errorCode = error.code;
             var errorMsg = error.message;
             alert(errorMsg);
@@ -364,8 +375,8 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
         if (isLoggedIn === false) {
             $("#login-modal").modal('show');
 
-            $(".loginmodal-submit").click(function() {
-                firebase.auth().signInWithEmailAndPassword(username.value, password.value).catch(function(error) {
+            $(".loginmodal-submit").click(function () {
+                firebase.auth().signInWithEmailAndPassword(username.value, password.value).catch(function (error) {
                     var errorCode = error.code;
                     var errorMsg = error.message;
                     alert(errorMsg);
@@ -375,9 +386,7 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
                 //alert("Logged in, you may now comment");
                 $("#login-modal").modal('hide');
             });
-        }
-
-        else {
+        } else {
             commentDivision.innerHTML = "";
             postComment(blogID, blogCommentTextInput.value)
             blogCommentTextInput.value = "";
@@ -432,17 +441,13 @@ var getBlog = function (blogID) {
         //printComments(blogID, );
         printBlog(blogID, blogTitle, blogDate, blogAuthor, blogString);
 
-        $(document).ready(function () {
-            $(".container-dharmik, .container-mirza, .container-vinit .container-Anonymous").mouseenter(function () {
-                $(this).addClass('animate');
-            });
 
-            $(".container-dharmik, .container-mirza, .container-vinit .container-Anonymous").mouseleave(function () {
-                $(this).removeClass('animate');
-            });
-        });
+
+
     });
 };
+
+
 
 
 
@@ -509,5 +514,3 @@ btn_today.onclick = function () {
     document.getElementById('monthInput').value = month;
     document.getElementById('yearInput').value = year.toString();
 }
-
-
