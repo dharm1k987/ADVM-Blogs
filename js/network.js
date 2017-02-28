@@ -14,7 +14,7 @@ $(document).ready(function () {
     $(".se-pre-con").fadeOut(3000);
     if (path === "/index.html") {
         // if you want to remove the troll, just remove the next line and yur good
-        window.location.href = "redirect.html"
+        window.location.replace("/redirect.html");
         initWebpage();
     }
     //initWebpage();
