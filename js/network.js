@@ -1,4 +1,6 @@
+
 $(document).ready(function () {
+    
     $(".container-dharmik, .container-mirza, .container-vinit, .container-Anonymous").click(function () {
         alert("in hover");
         $(this).addClass('animate');
@@ -10,10 +12,16 @@ $(document).ready(function () {
     console.log("passwed the func");
     var path = window.location.pathname;
     $(".se-pre-con").fadeOut(3000);
-    if (path === "/") {
+    if (path === "/index.html") {
+        // if you want to remove the troll, just remove the next line and yur good
+        window.location.href = "redirect.html"
         initWebpage();
     }
     //initWebpage();
+    
+    $("#btn-wts").click(function() {
+        $("#show-text").show();
+    })
 
 
 

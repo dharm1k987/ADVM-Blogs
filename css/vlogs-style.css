@@ -197,7 +197,7 @@ h2 {
     line-height: 35px;
     margin: 0 auto;
 }
-.reply-input {
+.reply-input,#btn-wts {
     height: 50px;
     width: 100%;
     margin-bottom: 1%;
