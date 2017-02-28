@@ -12,7 +12,7 @@ $(document).ready(function () {
     console.log("passwed the func");
     var path = window.location.pathname;
     $(".se-pre-con").fadeOut(3000);
-    if (path === "/index.html") {
+    if (path === "/") {
         // if you want to remove the troll, just remove the next line and yur good
         console.log("will now redirect to redirect");
         window.location.replace("/redirect.html");
