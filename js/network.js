@@ -25,13 +25,17 @@ $(document).ready(function () {
 
 });
 
+
+
+
+//REDIRECTOR !!! JUST REMOVE THIS ENTIRE SECTION TO REMOVE THE REDIRECTOR!
+var path = window.location.pathname;
 if (path === "/") {
-    // if you want to remove the troll, just remove the next line and yur good, after the console
+
     console.log("will now redirect to redirect");
     window.location.replace("/redirect.html");
 
 }
-
 
 
 var loggedIn = false;
