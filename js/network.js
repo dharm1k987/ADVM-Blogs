@@ -29,13 +29,14 @@ $(document).ready(function () {
 
 
 //REDIRECTOR !!! JUST REMOVE THIS ENTIRE SECTION TO REMOVE THE REDIRECTOR!
+/*
 var path = window.location.pathname;
 if (path === "/") {
 
     console.log("will now redirect to redirect");
     window.location.replace("/redirect.html");
 
-}
+}*/
 
 
 var loggedIn = false;
