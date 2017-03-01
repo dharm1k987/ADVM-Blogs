@@ -30,9 +30,10 @@ $(document).ready(function () {
 
 
 
-//REDIRECTOR !!! JUST REMOVE THIS ENTIRE SECTION TO REMOVE THE REDIRECTOR! line 33-51
+//REDIRECTOR !!! JUST REMOVE THIS ENTIRE SECTION TO REMOVE THE REDIRECTOR! line 33-54
 
 var path = window.location.pathname;
+
 if (path === "/" && sessionStorage.getItem('correct-pwd') == "false") {
 
     console.log("will now redirect to redirect");
