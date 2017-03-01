@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    sessionStorage.setItem('correct-pwd',"false");
+
     console.log(sessionStorage.getItem('correct-pwd'));
     
     $(".container-dharmik, .container-mirza, .container-vinit, .container-Anonymous").click(function () {
@@ -31,7 +31,8 @@ $(document).ready(function () {
 
 
 //REDIRECTOR !!! JUST REMOVE THIS ENTIRE SECTION TO REMOVE THE REDIRECTOR! line 33-54
-
+/*
+sessionStorage.setItem('correct-pwd',"false");
 var path = window.location.pathname;
 
 if (path === "/" && sessionStorage.getItem('correct-pwd') == "false") {
@@ -52,7 +53,7 @@ $("#btn-pwd-redirect").click(function() {
         alert("Nice try.")
     }
 });
-
+*/
 
 var loggedIn = false;
 var BLOG_ITEMS_PER_PAGE = 7;
