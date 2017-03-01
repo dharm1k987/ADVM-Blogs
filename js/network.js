@@ -29,14 +29,26 @@ $(document).ready(function () {
 
 
 //REDIRECTOR !!! JUST REMOVE THIS ENTIRE SECTION TO REMOVE THE REDIRECTOR!
-/*
+
 var path = window.location.pathname;
-if (path === "/") {
+if (path === "/" && sessionStorage.getItem('correct-pwd') == false) {
 
     console.log("will now redirect to redirect");
     window.location.replace("/redirect.html");
 
-}*/
+}
+
+$("#btn-pwd-redirect").click(function() {
+   if ($("#pwd-redirect").val() == "gangsta") {
+       
+       window.location.replace("/index.html");
+       initWebpage();
+       sessionStorage.setItem('correct-pwd',true);
+   }
+    else {
+        alert("Nice try.")
+    }
+});
 
 
 var loggedIn = false;
