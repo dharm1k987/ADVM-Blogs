@@ -1,5 +1,7 @@
 
 $(document).ready(function () {
+    sessionStorage.setItem('correct-pwd',"false");
+    console.log(sessionStorage.getItem('correct-pwd'));
     
     $(".container-dharmik, .container-mirza, .container-vinit, .container-Anonymous").click(function () {
         alert("in hover");
@@ -31,7 +33,7 @@ $(document).ready(function () {
 //REDIRECTOR !!! JUST REMOVE THIS ENTIRE SECTION TO REMOVE THE REDIRECTOR! line 33-51
 
 var path = window.location.pathname;
-if (path === "/" && sessionStorage.getItem('correct-pwd') == false) {
+if (path === "/index.html" && sessionStorage.getItem('correct-pwd') == "false") {
 
     console.log("will now redirect to redirect");
     window.location.replace("/redirect.html");
@@ -43,7 +45,7 @@ $("#btn-pwd-redirect").click(function() {
        
        window.location.replace("/index.html");
        initWebpage();
-       sessionStorage.setItem('correct-pwd',true);
+       sessionStorage.setItem('correct-pwd',"true");
    }
     else {
         alert("Nice try.")
