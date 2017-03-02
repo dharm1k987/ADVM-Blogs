@@ -82,7 +82,6 @@ firebase.initializeApp(config);
 var thisUser;
 
 firebase.auth().onAuthStateChanged(function (user) {
-    alert("Auth state changed");
     if (user) {
         thisUser = user;
         refreshDisplay(USER_LOGGED_IN);
