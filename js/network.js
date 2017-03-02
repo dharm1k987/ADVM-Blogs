@@ -238,7 +238,7 @@ function getCurrentDate() {
     var monthString = "";
     var year = d.getFullYear();
 
-    switch month {
+    switch (month) {
         case 0:
             monthString = "January";
             break;
