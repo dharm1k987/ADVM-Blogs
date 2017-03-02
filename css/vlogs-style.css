@@ -411,8 +411,8 @@ input[type=password]:hover {
 }
 #snackbar.show {
     visibility: visible;
-    -webkit-animation: fadein 0.001s, fadeout 0.001s 0.5s;
-    animation: fadein 0.001s, fadeout 0.001s 0.5s;
+    -webkit-animation: fadein 0.1s, fadeout 0.1s 1.0s;
+    animation: fadein 0.1s, fadeout 0.1s 1.0s;
 }
 @-webkit-keyframes fadein {
     from {

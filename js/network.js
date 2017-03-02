@@ -219,11 +219,11 @@ var loginProcess = function () {
     $("#login-btn").click(function () {
 
         if (validUsername(email)) {
-            $("#user-action-modal").modal('hide');
+            $("#login-modal").modal('hide');
             firebase.auth().signInWithEmailAndPassword(email.value, password.value).then(function (resolved) {
                 thisUser = firebase.auth().currentUser;
                 if (thisUser.emailVerified) {
-                    alert("Logged in");
+                    makeToast("Logged in", 1, 1000);
                     refreshDisplay(USER_LOGGED_IN);
                     initMainWebpage();
                 } else {
@@ -239,6 +239,8 @@ var loginProcess = function () {
 
         }
     });
+
+
 };
 
 var registerProcess = function () {
@@ -253,6 +255,7 @@ var registerProcess = function () {
 
         if (validUsername(username) && validPassword(password)) {
             firebase.auth().createUserWithEmailAndPassword(email.value, password.value).then(function (resolved) {
+                $("#register-modal").modal('hide');
                 newUser = firebase.auth().currentUser;
                 newUser.updateProfile({
                     displayName: name.value,
@@ -277,10 +280,6 @@ var registerProcess = function () {
             $("#user-action-modal").modal('hide');
         }
     });
-
-    username.onkeypress = function() {
-        makeToast(username.value, 1);
-    };
 };
 
 
@@ -309,7 +308,7 @@ var refreshDisplay = function (currentState) {
 var signout = function () {
     if (thisUser) {
         firebase.auth().signOut().then(function () {
-            alert("You've successfully signed out");
+            makeToast("You've successfully signed out", 1, 1000);
         }, function (error) {
             alert(error.message);
         });
@@ -549,7 +548,7 @@ var getComments = function (blogID) {
 
 // POSTING Blogs
 
-var makeToast = function (outputString, outputStatus) {
+var makeToast = function (outputString, outputStatus, timeout) {
     var colour = "green";
     if (outputStatus === 1) {
         colour = "green";
@@ -562,17 +561,17 @@ var makeToast = function (outputString, outputStatus) {
     el.style.backgroundColor = colour;
     setTimeout(function () {
         el.className = el.className.replace("show", "");
-    }, 2000);
+    }, timeout);
 }
 
 var reassureBeforePost = function () {
     var password = document.getElementById("passwordField").value;
     if (password === VERIFICATION_KEY) {
-        makeToast("VERIFIED", 1);
+        makeToast("VERIFIED", 1, 1000);
         document.getElementById('confirmedPushBtn').style.visibility = "visible";
         document.getElementById('blogPushBtn').style.visibility = "hidden";
     } else {
-        makeToast("Wrong password", 0);
+        makeToast("Wrong password", 0, 2000);
     }
 }
 
