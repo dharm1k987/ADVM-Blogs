@@ -1,6 +1,5 @@
 
 window.onload = function () {
-
     $(".container-dharmik, .container-mirza, .container-vinit, .container-Anonymous").click(function () {
         alert("in hover");
         $(this).addClass('animate');
@@ -10,8 +9,9 @@ window.onload = function () {
         $(this).removeClass('animate');
     });
     var path = window.location.pathname;
+    var path2 = path.substring(path.length - 10);
     $(".se-pre-con").fadeOut(2000);
-    if (path === "/") {
+    if (path === "/" || path2 === "index.html") {
         var push_btn = document.getElementById("upload-btn");
         push_btn.onclick = function () {
             window.location.replace("upload.html");
@@ -29,8 +29,6 @@ window.onload = function () {
         $("#show-text").show();
     });
 };
-
-
 
 
 //REDIRECTOR !!! JUST REMOVE THIS ENTIRE SECTION TO REMOVE THE REDIRECTOR! line 33-54
@@ -60,6 +58,8 @@ $("#btn-pwd-redirect").click(function() {
 
 var loggedIn = false;
 var BLOG_ITEMS_PER_PAGE = 7;
+var NO_USER_LOGGED_IN = 0;
+var USER_LOGGED_IN = 1;
 
 var defaultDB = new Firebase("https://mybloggingdb.firebaseio.com");
 var blogsRef = defaultDB.child('/blogs/');
@@ -79,19 +79,30 @@ var VERIFICATION_KEY = "gangsta";
 firebase.initializeApp(config);
 
 
+var thisUser;
+
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        thisUser = user;
+        refreshDisplay(USER_LOGGED_IN);
+    } else {
+        thisUser = "";
+        refreshDisplay(NO_USER_LOGGED_IN);
+    }
+});
+
 ////////////////////////////////////////////////////////////////////////////////////
 // Index.html Module:
 
 var isLoggedIn = false;
 
 var initMainWebpage = function () {
-    var user = firebase.auth().currentUser;
-    if (user) {
-        alert("There is a user logged in");
-        alert(user.email);
+    if (thisUser) {
         isLoggedIn = true;
+        refreshDisplay(USER_LOGGED_IN);
 
     } else {
+        refreshDisplay(NO_USER_LOGGED_IN);
         //Uncomment when implemented logging in.
         //loginProcess();
     }
@@ -171,7 +182,15 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
     commentDivision.className = "comment-style";
     commentDivision.id = "commentDivision" + blogID;
 
-    blogCommentBtn.onclick = loginProcess();
+    blogCommentBtn.onclick = function () {
+        var user = firebase.auth().currentUser;
+        if (user) {
+            postComment(blogID, blogCommentTextInput.value, thisUser);
+        } else {
+            loginProcess();
+        }
+
+    };
 
     blogObjEl.appendChild(blogTitleEl);
     blogObjEl.appendChild(blogDateEl);
@@ -186,23 +205,115 @@ var printBlog = function (blogID, blogTitle, blogDate, blogAuthor, blogString) {
 };
 
 var loginProcess = function () {
-    $("#login-modal").modal('show');
+    if (!thisUser) {
+        $("#login-modal").modal('show');
+    } else {
+        alert(thisUser.displayName+" is logged in.");
+    }
 
-    var username = document.getElementById("username");
-    var password = document.getElementById("password");
+
+    var email = document.getElementById("email-login");
+    var password = document.getElementById("password-login");
     var loginBtn = document.getElementById("login-btn");
 
-    $(".loginmodal-submit").click(function () {
-        firebase.auth().signInWithEmailAndPassword(username.value, password.value).then(function (resolved) {
-            initMainWebpage();
-        }, function (error) {
-            var errorCode = error.code;
-            var errorMsg = error.message;
-            alert(errorMsg);
-            alert("logged in?");
-        });
-        $("#login-modal").modal('hide');
+    $("#login-btn").click(function () {
+
+        if (validUsername(email)) {
+            $("#user-action-modal").modal('hide');
+            firebase.auth().signInWithEmailAndPassword(email.value, password.value).then(function (resolved) {
+                thisUser = firebase.auth().currentUser;
+                if (thisUser.emailVerified) {
+                    alert("Logged in");
+                    refreshDisplay(USER_LOGGED_IN);
+                    initMainWebpage();
+                } else {
+                    alert("Please verify your email");
+                    //User: Sign out
+                    signout();
+                }
+            }, function (error) {
+                var errorCode = error.code;
+                var errorMsg = error.message;
+                alert(errorMsg);
+            });
+
+        }
     });
+};
+
+var registerProcess = function () {
+    $("#register-modal").modal('show');
+
+    var name = document.getElementById("name-of-user-register");
+    var username = document.getElementById("username-register");
+    var email = document.getElementById("email-register");
+    var password = document.getElementById("password-register");
+    var loginBtn = document.getElementById("register-btn");
+    $("#register-btn").click(function () {
+
+        if (validUsername(username) && validPassword(password)) {
+            firebase.auth().createUserWithEmailAndPassword(email.value, password.value).then(function (resolved) {
+                newUser = firebase.auth().currentUser;
+                newUser.updateProfile({
+                    displayName: name.value,
+                    username: username.value
+                }).then(function() {
+                    newUser.sendEmailVerification().then(function () {
+                        alert("Verification email sent at: "+newUser.email);
+                        signout();
+                        initMainWebpage();
+                    }, function(error) {
+                        alert(error.message);
+                    });
+                }, function(error) {
+                    alert(error.message);
+                });
+
+            }, function (error) {
+                var errorCode = error.code;
+                var errorMsg = error.message;
+                alert(errorMsg);
+            });
+            $("#user-action-modal").modal('hide');
+        }
+    });
+
+    username.onkeypress = function() {
+        makeToast(username.value, 1);
+    };
+};
+
+
+var validUsername = function (username) {
+    return true;
+};
+
+var validPassword = function (password) {
+    return true;
+};
+
+var refreshDisplay = function (currentState) {
+    if (currentState === USER_LOGGED_IN) {
+        document.getElementById("register-modal-btn").style.display = "none";
+        document.getElementById("login-modal-btn").style.display = "none";
+        document.getElementById("upload-btn").style.display = "visible";
+        document.getElementById("signout-btn").style.display = "visible";
+    } else if (currentState === NO_USER_LOGGED_IN) {
+        document.getElementById("register-modal-btn").style.display = "visible";
+        document.getElementById("login-modal-btn").style.display = "visible";
+        document.getElementById("upload-btn").style.display = "none";
+        document.getElementById("signout-btn").style.display = "none";
+    }
+};
+
+var signout = function () {
+    if (thisUser) {
+        firebase.auth().signOut().then(function () {
+            alert("You've successfully signed out");
+        }, function (error) {
+            alert(error.message)
+        });
+    }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -303,9 +414,7 @@ var postBlog = function () {
         var blogID = "blog" + updatedAmount;
         var blogTitle = document.getElementById('titleInput').value;
 
-        var blogDate = document.getElementById('dayInput').value + "-" +
-            document.getElementById('monthInput').value + "-" +
-            document.getElementById('yearInput').value + " - " + getCurrentTime();
+        var blogDate = getCurrentDate() + " -- " + getCurrentTime();
 
         var authorArr = document.getElementsByName('author');
         var blogAuthor = "";
@@ -355,7 +464,7 @@ var getAuthorFirstname = function (blogAuthor) {
     }
 }
 
-var postComment = function (blogID, comment) {
+var postComment = function (blogID, comment, user) {
     // CHECK COMMENT VALIDITY HERE.
 
     var commentAmountRef = defaultDB.child('/blogs/' + blogID + '/blogCommentAmount');
@@ -369,9 +478,21 @@ var postComment = function (blogID, comment) {
 
         var newCommentRef = blogsRef.child('/' + blogID + '/comments/');
         var commentObject = {};
-        commentObject[newCommentID] = comment.valueOf();
-        newCommentRef.update(commentObject);
-        getComments(blogID);
+
+        if (thisUser) {
+            var commentDate = getCurrentDate();
+            var commenterName = thisUser.displayName;
+
+            commentObject[newCommentID] = {
+                commentValue: comment.valueOf(),
+                commenter: commenterName.valueOf(),
+                dateOf: commentDate.valueOf()
+            };
+            newCommentRef.update(commentObject);
+            getComments(blogID);
+        } else {
+
+        }
     });
 
 };
@@ -388,19 +509,24 @@ var getComments = function (blogID) {
                 var commentRef = blogsRef.child(blogID + '/comments/' + commentID);
                 commentRef.once('value', function (comment) {
                     // UPDATE FRONTEND WITH COMMENTS HERE.
-
                     var divider = document.createElement("hr");
                     divider.className = "divider";
                     var dateTimeComment = document.createElement('div');
                     dateTimeComment.className = "dtComment";
                     // NEED TO SETUP THE COMMENT'S DATE HERE
+                    dateTimeComment = comment.val().dateOf;
 
 
 
-                    commentsSection.appendChild(document.createTextNode(comment.val()));
-                    commentsSection.appendChild(document.createElement("br"))
-                    commentsSection.appendChild(dateTimeComment);
+                    commentsSection.appendChild(document.createTextNode(comment.val().commentValue));
+                    commentsSection.appendChild(document.createElement("br"));
+                    commentsSection.appendChild(document.createTextNode("~"+comment.val().commenter));
+                    commentsSection.appendChild(document.createElement("br"));
+                    commentsSection.appendChild(document.createTextNode(dateTimeComment));
                     commentsSection.appendChild(divider);
+                    commentsSection.appendChild(document.createElement("br"));
+                    commentsSection.appendChild(document.createElement("br"));
+                    commentsSection.appendChild(document.createElement("br"));
                     commentsSection.appendChild(document.createElement("br"));
 
 
