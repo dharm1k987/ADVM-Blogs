@@ -82,6 +82,7 @@ firebase.initializeApp(config);
 var thisUser;
 
 firebase.auth().onAuthStateChanged(function (user) {
+    alert("Auth state changed");
     if (user) {
         thisUser = user;
         refreshDisplay(USER_LOGGED_IN);
@@ -296,11 +297,11 @@ var refreshDisplay = function (currentState) {
     if (currentState === USER_LOGGED_IN) {
         document.getElementById("register-modal-btn").style.display = "none";
         document.getElementById("login-modal-btn").style.display = "none";
-        document.getElementById("upload-btn").style.display = "visible";
-        document.getElementById("signout-btn").style.display = "visible";
+        document.getElementById("upload-btn").style.display = "inherit";
+        document.getElementById("signout-btn").style.display = "initial";
     } else if (currentState === NO_USER_LOGGED_IN) {
-        document.getElementById("register-modal-btn").style.display = "visible";
-        document.getElementById("login-modal-btn").style.display = "visible";
+        document.getElementById("register-modal-btn").style.display = "initial";
+        document.getElementById("login-modal-btn").style.display = "initial";
         document.getElementById("upload-btn").style.display = "none";
         document.getElementById("signout-btn").style.display = "none";
     }
@@ -311,7 +312,7 @@ var signout = function () {
         firebase.auth().signOut().then(function () {
             alert("You've successfully signed out");
         }, function (error) {
-            alert(error.message)
+            alert(error.message);
         });
     }
 };
