@@ -479,7 +479,7 @@ var postComment = function (blogID, comment, user) {
         var commentObject = {};
 
         if (thisUser) {
-            var commentDate = getCurrentDate();
+            var commentDate = getCurrentDate() + " - " + getCurrentTime();
             var commenterName = thisUser.displayName;
 
             commentObject[newCommentID] = {
