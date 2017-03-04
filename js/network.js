@@ -519,14 +519,14 @@ var getComments = function (blogID) {
 
                     commentsSection.appendChild(document.createTextNode(comment.val().commentValue));
                     commentsSection.appendChild(document.createElement("br"));
-                    commentsSection.appendChild(document.createTextNode("~"+comment.val().commenter));
+                    commentsSection.appendChild(document.createTextNode("- "+comment.val().commenter));
                     commentsSection.appendChild(document.createElement("br"));
                     commentsSection.appendChild(document.createTextNode(dateTimeComment));
                     commentsSection.appendChild(divider);
+                    //commentsSection.appendChild(document.createElement("br"));
+                   /* commentsSection.appendChild(document.createElement("br"));
                     commentsSection.appendChild(document.createElement("br"));
-                    commentsSection.appendChild(document.createElement("br"));
-                    commentsSection.appendChild(document.createElement("br"));
-                    commentsSection.appendChild(document.createElement("br"));
+                    commentsSection.appendChild(document.createElement("br"));*/
 
 
                 });
