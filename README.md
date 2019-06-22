@@ -31,13 +31,13 @@ The developers (Dharmik & Vinit) created this using basic technology that was av
 
 Screenshots: 
 
-<img src="screens/one.png">
+<img src="screens/one.PNG">
 
-<img src="screens/two.png">
+<img src="screens/two.PNG">
 
-<img src="screens/three.png">
+<img src="screens/three.PNG">
 
-<img src="screens/four.png">
+<img src="screens/four.PNG">
 
 ###### ©** ADMV 2017
 
